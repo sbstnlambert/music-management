@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:music_management_db
+    username: user
+    password: pass
+
+  h2:
+    console:
+      enabled: true
+      path: /h2
