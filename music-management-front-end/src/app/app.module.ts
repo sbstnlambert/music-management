@@ -9,6 +9,7 @@ import { ArtistsListComponent } from './components/artist/artists-list/artists-l
 import { Error404Component } from './components/error404/error404.component';
 import { ArtistCardComponent } from './components/artist/artist-card/artist-card.component';
 import { ArtistDetailComponent } from './components/artist/artist-detail/artist-detail.component';
+import { AlbumCardComponent } from './components/album/album-card/album-card.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ArtistDetailComponent } from './components/artist/artist-detail/artist-
     ArtistsListComponent,
     Error404Component,
     ArtistCardComponent,
-    ArtistDetailComponent
+    ArtistDetailComponent,
+    AlbumCardComponent
   ],
   imports: [
     BrowserModule,

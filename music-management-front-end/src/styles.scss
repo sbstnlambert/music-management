@@ -18,3 +18,7 @@ a:hover {
 li {
     list-style-type: none;
 }
+
+.card:hover {
+    filter: brightness(70%);
+}
