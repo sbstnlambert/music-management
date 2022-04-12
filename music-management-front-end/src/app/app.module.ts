@@ -7,6 +7,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { ArtistsListComponent } from './components/artist/artists-list/artists-list.component';
 import { Error404Component } from './components/error404/error404.component';
 import { ArtistCardComponent } from './components/artist/artist-card/artist-card.component';
+import { ArtistDetailComponent } from './components/artist/artist-detail/artist-detail.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ArtistCardComponent } from './components/artist/artist-card/artist-card
     HeaderComponent,
     ArtistsListComponent,
     Error404Component,
-    ArtistCardComponent
+    ArtistCardComponent,
+    ArtistDetailComponent
   ],
   imports: [
     BrowserModule,
