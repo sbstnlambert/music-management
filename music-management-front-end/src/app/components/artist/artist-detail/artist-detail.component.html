@@ -1,1 +1,16 @@
-<p>artist-detail works!</p>
+<ng-template #loading>
+    <div>
+        <p>Chargement en cours...</p>
+    </div>
+</ng-template>
+
+<div *ngIf="albums; else loading">
+    <div class="container d-flex justify-content-center align-items-center pt-5 pb-5">
+        <h2><!--{{ artist.name }}-->Twenty One Pilots</h2>
+    </div>    
+    <div class="m-5 mt-0 d-flex justify-content-center flex-row flex-wrap">
+        <app-album-card *ngFor="let album of albums" 
+                            [album]="album">
+        </app-album-card>
+    </div>
+</div>

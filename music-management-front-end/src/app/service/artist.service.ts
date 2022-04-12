@@ -15,4 +15,8 @@ export class ArtistService {
   public getAllArtists(): Observable<Array<Artist>> {
     return this.http.get<Array<Artist>>(this.BASE_URL);
   }
+
+  public getArtistById(id: number): Observable<Artist> {
+    return this.http.get<Artist>(`${this.BASE_URL}/${id}`);
+  }
 }
