@@ -29,6 +29,12 @@ public class DatabaseFiller implements InitializingBean {
                 .build();
         artistRepository.save(maskedWolf);
 
+        Artist jacquesBrel = Artist.builder()
+                .name("Jacques Brel")
+                .imageUrl("https://bit.ly/37GLvhh")
+                .build();
+        artistRepository.save(jacquesBrel);
+
         Artist architects = Artist.builder()
                 .name("Architects")
                 .imageUrl("https://bit.ly/3KPEUzP")
@@ -67,9 +73,15 @@ public class DatabaseFiller implements InitializingBean {
 
         Artist jeanFerrat = Artist.builder()
                 .name("Jean Ferrat")
-                .imageUrl("https://bit.ly/3E3mAjQ")
+                .imageUrl("https://bit.ly/3JwWrer")
                 .build();
         artistRepository.save(jeanFerrat);
+
+        Artist imagineDragons = Artist.builder()
+                .name("Imagine Dragons")
+                .imageUrl("https://bit.ly/3KEi4uS")
+                .build();
+        artistRepository.save(imagineDragons);
 
     }
 }
