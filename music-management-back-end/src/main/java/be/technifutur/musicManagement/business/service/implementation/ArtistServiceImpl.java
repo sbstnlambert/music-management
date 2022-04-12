@@ -2,6 +2,7 @@ package be.technifutur.musicManagement.business.service.implementation;
 
 import be.technifutur.musicManagement.business.mapper.ArtistMapper;
 import be.technifutur.musicManagement.business.service.specification.ArtistService;
+import be.technifutur.musicManagement.exception.ElementNotFoundException;
 import be.technifutur.musicManagement.model.dto.ArtistDTO;
 import be.technifutur.musicManagement.repository.ArtistRepository;
 import org.springframework.stereotype.Service;
@@ -25,5 +26,12 @@ public class ArtistServiceImpl implements ArtistService {
                 .stream()
                 .map(mapper::entityToDTO)
                 .toList();
+    }
+
+    @Override
+    public ArtistDTO getArtistById(Long id) {
+        return repository.findById(id)
+                .map(mapper::entityToDTO)
+                .orElseThrow(() -> new ElementNotFoundException(id, ArtistDTO.class));
     }
 }
