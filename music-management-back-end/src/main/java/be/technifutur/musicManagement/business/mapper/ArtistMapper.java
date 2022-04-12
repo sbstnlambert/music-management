@@ -13,6 +13,7 @@ public class ArtistMapper {
             return ArtistDTO.builder()
                     .id(entity.getId())
                     .name(entity.getName())
+                    .imageUrl(entity.getImageUrl())
                     .build();
     }
 }
