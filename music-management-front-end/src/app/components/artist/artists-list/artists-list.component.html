@@ -1,3 +1,4 @@
 <div class="m-5 d-flex justify-content-center flex-row flex-wrap">
-    <app-artist-card *ngFor="let artist of artists" [artist]="artist"></app-artist-card>
+    <app-artist-card *ngFor="let artist of (artistService.getAllArtists() | async) as artists" 
+                     [artist]="artist"></app-artist-card>
 </div>
