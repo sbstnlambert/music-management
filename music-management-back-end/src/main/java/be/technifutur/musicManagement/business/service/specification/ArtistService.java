@@ -8,5 +8,6 @@ public interface ArtistService {
 
     // READ
     List<ArtistDTO> getAllArtists();
+    ArtistDTO getArtistById(Long id);
 
 }
