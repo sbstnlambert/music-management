@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(name = "artist")
+@RequestMapping("/artist")
 public class ArtistController {
 
     private final ArtistService service;
