@@ -12,6 +12,10 @@ export class TrackService {
 
   constructor(private http: HttpClient) { }
 
+  public getTracksByArtist(artistId: number): Observable<Array<TrackSimple>> {
+    return this.http.get<Array<TrackSimple>>(`${this.BASE_URL}/artist/${artistId}`);
+  }
+
   public getTracksByAlbum(albumId: number): Observable<Array<TrackSimple>> {
     return this.http.get<Array<TrackSimple>>(`${this.BASE_URL}/album/${albumId}`);
   }
