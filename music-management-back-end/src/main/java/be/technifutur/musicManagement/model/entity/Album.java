@@ -4,6 +4,8 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -32,5 +34,8 @@ public class Album {
 
     @ManyToOne
     private Artist artist;
+
+    @OneToMany(mappedBy = "album")
+    private List<Track> tracks = new ArrayList<>();
 
 }

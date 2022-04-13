@@ -26,4 +26,7 @@ public class Artist {
 
     @OneToMany(mappedBy = "artist")
     private List<Album> albums = new ArrayList<>();
+
+    @OneToMany(mappedBy = "artist")
+    private List<Track> tracks = new ArrayList<>();
 }
