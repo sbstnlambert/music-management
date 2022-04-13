@@ -4,7 +4,7 @@
     </div>
 </ng-template>
 
-<div *ngIf="albums; else loading">
+<div *ngIf="artist && albums; else loading">
     <div class="container d-flex justify-content-center align-items-center pt-5 pb-5">
         <h2>{{ artist.name }}</h2>
     </div>    
