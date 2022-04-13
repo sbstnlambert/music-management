@@ -30,4 +30,7 @@ public class Album {
     @Column(name = "image_url", nullable = true)
     private String imageUrl;
 
+    @ManyToOne
+    private Artist artist;
+
 }

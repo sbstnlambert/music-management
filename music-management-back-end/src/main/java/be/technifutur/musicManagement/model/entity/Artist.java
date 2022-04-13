@@ -3,6 +3,8 @@ package be.technifutur.musicManagement.model.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -21,4 +23,7 @@ public class Artist {
 
     @Column(name = "image_url", nullable = true)
     private String imageUrl;
+
+    @OneToMany(mappedBy = "artist")
+    private List<Album> albums = new ArrayList<>();
 }

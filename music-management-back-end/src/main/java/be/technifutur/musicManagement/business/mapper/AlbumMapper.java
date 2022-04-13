@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class AlbumMapper {
 
-    public AlbumDTO entityToDTO(Album entity, Long artistId) {
+    public AlbumDTO entityToDTO(Album entity) {
         if (entity == null)
             return null;
 
