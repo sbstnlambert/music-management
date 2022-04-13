@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TrackServiceMock implements TrackService {
+
     @Override
     public List<TrackSimpleDTO> getTracksByAlbum(Long albumId) {
         List<TrackSimpleDTO> mockList = new ArrayList<>();
@@ -43,4 +44,5 @@ public class TrackServiceMock implements TrackService {
         );
         return mockList;
     }
+
 }

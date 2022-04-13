@@ -9,9 +9,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@AllArgsConstructor
 @Service
+@AllArgsConstructor
 public class TrackServiceImpl implements TrackService {
+
     private final TrackRepository repository;
     private final TrackMapper mapper;
 
@@ -22,4 +23,5 @@ public class TrackServiceImpl implements TrackService {
                 .map(mapper::entityToSimpleDTO)
                 .toList();
     }
+
 }

@@ -14,13 +14,14 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-@Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter @Setter
 @Builder
 @Entity
 @Table(name = "track")
 public class Track {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -55,4 +56,5 @@ public class Track {
 
     @ManyToOne
     private Artist artist;
+
 }

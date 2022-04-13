@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface TrackRepository extends JpaRepository<Track, Long> {
+
     @Query("SELECT t FROM Track t WHERE t.album.id = ?1")
     List<Track> findTracksByAlbum(Long albumId);
+
 }

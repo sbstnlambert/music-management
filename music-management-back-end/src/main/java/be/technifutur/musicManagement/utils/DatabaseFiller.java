@@ -22,7 +22,6 @@ public class DatabaseFiller implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() throws Exception {
-
         /* ARTIST CREATION */
 
         Artist twentyOnePilots = Artist.builder()
@@ -191,4 +190,5 @@ public class DatabaseFiller implements InitializingBean {
                 .build();
         trackRepository.save(gravityGlidin);
     }
+
 }

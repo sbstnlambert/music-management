@@ -14,6 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @RequestMapping("/track")
 public class TrackController {
+
     private final TrackService service;
 
     // GET - http://localhost:8080/track/album/:albumId
@@ -21,4 +22,5 @@ public class TrackController {
     public List<TrackSimpleDTO> getTracksByAlbum(@PathVariable Long albumId) {
         return this.service.getTracksByAlbum(albumId);
     }
+
 }

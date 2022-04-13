@@ -6,9 +6,11 @@ import lombok.Data;
 @Data
 @Builder
 public class TrackDetailedDTO {
+
     private Long id;
     private String name;
     private int lengthInSeconds;
     private int numberOfLikes;
     private int albumPosition;
+
 }

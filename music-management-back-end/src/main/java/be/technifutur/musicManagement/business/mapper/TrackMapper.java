@@ -7,9 +7,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class TrackMapper {
     public TrackSimpleDTO entityToSimpleDTO(Track entity) {
-        if (entity == null) {
+        if (entity == null)
             return null;
-        }
+
         return TrackSimpleDTO.builder()
                 .id(entity.getId())
                 .name(entity.getName())
