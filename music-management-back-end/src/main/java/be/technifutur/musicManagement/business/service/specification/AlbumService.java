@@ -7,6 +7,7 @@ import java.util.List;
 public interface AlbumService {
 
     // READ
+    AlbumDTO getAlbumById(Long id);
     List<AlbumDTO> getAlbumsByArtist(Long artistId);
 
 }

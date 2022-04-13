@@ -17,6 +17,12 @@ public class AlbumController {
 
     private final AlbumService service;
 
+    // GET - http://localhost:8080/album/:id
+    @GetMapping("/{id}")
+    public AlbumDTO getAlbumById(@PathVariable Long id) {
+        return this.service.getAlbumById(id);
+    }
+
     // GET - http://localhost:8080/album/artist/:artistId
     @GetMapping("/artist/{artistId}")
     public List<AlbumDTO> getAlbumsByArtist(@PathVariable Long artistId) {
