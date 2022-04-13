@@ -3,16 +3,16 @@ package be.technifutur.musicManagement.model.entity;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDate;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter @Setter
+@Getter
+@Setter
 @Builder
 @Entity
-@Table(name = "artist")
-public class Artist {
+@Table(name = "album")
+public class Album {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -21,9 +21,16 @@ public class Artist {
     @Column(name = "name", nullable = false)
     private String name;
 
+    @Column(name = "release_date", nullable = true)
+    private LocalDate releaseDate;
+
+    @Column(name = "record_label", nullable = true)
+    private String recordLabel;
+
     @Column(name = "image_url", nullable = true)
     private String imageUrl;
 
-    @OneToMany(mappedBy = "artist")
-    private List<Album> albums = new ArrayList<>();
+    @ManyToOne
+    private Artist artist;
+
 }
