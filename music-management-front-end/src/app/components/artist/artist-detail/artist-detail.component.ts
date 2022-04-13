@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Album } from 'src/app/model/album.model';
 import { Artist } from 'src/app/model/artist.model';
+import { AlbumService } from 'src/app/service/album.service';
 import { ArtistService } from 'src/app/service/artist.service';
 
 @Component({
@@ -11,7 +12,11 @@ import { ArtistService } from 'src/app/service/artist.service';
 })
 export class ArtistDetailComponent implements OnInit {
 
-  private _artist!: Artist;
+  public artist: Artist = {
+    id: 1,
+    name: 'Twenty Two Pilots',
+    imageUrl: ''
+  };
   public albums: Array<Album> = [
     {
       id: 1,
@@ -88,6 +93,7 @@ export class ArtistDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute, 
+    private albumService: AlbumService,
     private artistService: ArtistService
   ) {
     // let artistIdString: string | null = route.snapshot.paramMap.get('id');
@@ -95,16 +101,17 @@ export class ArtistDetailComponent implements OnInit {
 
     // if (artistId && artistId > 0) {
     //   this.artistService.getArtistById(artistId).subscribe({
-    //     next: artist => this._artist = artist,
-    //     error: () => alert('La requête a échoué')
+    //     next: artist => this.artist = artist,
+    //     error: () => console.log("An error has occured while communicating with the back-end service");
+    //   });
+
+    //   this.albumService.getAlbumsByArtist(artistId).subscribe({
+    //     next: albums => this.albums = albums,
+    //     error: () => console.log("An error has occured while communicating with the back-end service");
     //   });
     // } else {
     //   alert('Id invalide');
     // }
-  }
-
-  public get artist(): Artist {
-    return this._artist;
   }
 
   ngOnInit(): void {
