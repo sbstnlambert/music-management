@@ -1,0 +1,16 @@
+<ng-template #loading>
+    <div>
+        <p>Loading...</p>
+    </div>
+</ng-template>
+
+<div *ngIf="tracks; else loading">
+    <div class="container d-flex justify-content-center align-items-center pt-5 pb-5">
+        <h2>{{ album.name }}</h2>
+    </div>    
+    <div class="m-5 mt-0 d-flex justify-content-center flex-row flex-wrap">
+        <app-track-banner *ngFor="let track of tracks" 
+                        [track]="track">
+        </app-track-banner>
+    </div>
+</div>
