@@ -15,4 +15,8 @@ export class AlbumService {
   public getAlbumsByArtist(artistId: number): Observable<Array<Album>> {
     return this.http.get<Array<Album>>(`${this.BASE_URL}/artist/${artistId}`);
   }
+
+  public getAlbumById(id: number): Observable<Album> {
+    return this.http.get<Album>(`${this.BASE_URL}/${id}`);
+  }
 }
