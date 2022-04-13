@@ -2,27 +2,26 @@ package be.technifutur.musicManagement.utils;
 
 import be.technifutur.musicManagement.model.entity.Album;
 import be.technifutur.musicManagement.model.entity.Artist;
+import be.technifutur.musicManagement.model.entity.Track;
 import be.technifutur.musicManagement.repository.AlbumRepository;
 import be.technifutur.musicManagement.repository.ArtistRepository;
+import be.technifutur.musicManagement.repository.TrackRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 
 @Component
+@AllArgsConstructor
 public class DatabaseFiller implements InitializingBean {
 
     private final ArtistRepository artistRepository;
     private final AlbumRepository albumRepository;
-
-    public DatabaseFiller(ArtistRepository artistRepository, AlbumRepository albumRepository) {
-        this.artistRepository = artistRepository;
-        this.albumRepository = albumRepository;
-    }
+    private final TrackRepository trackRepository;
 
     @Override
     public void afterPropertiesSet() throws Exception {
-
         /* ARTIST CREATION */
 
         Artist twentyOnePilots = Artist.builder()
@@ -129,5 +128,67 @@ public class DatabaseFiller implements InitializingBean {
                 .build();
         albumRepository.save(astronomical);
 
+        /* TRACK CREATION */
+
+        Track jumpsuit = Track.builder()
+                .name("Jumpsuit")
+                .lengthInSeconds(299)
+                .numberOfLikes(116452548)
+                .albumPosition(1)
+                .album(trench)
+                .artist(twentyOnePilots)
+                .build();
+        trackRepository.save(jumpsuit);
+
+        Track levitate = Track.builder()
+                .name("Levitate")
+                .lengthInSeconds(154)
+                .numberOfLikes(38584678)
+                .albumPosition(2)
+                .album(trench)
+                .artist(twentyOnePilots)
+                .build();
+        trackRepository.save(levitate);
+
+        Track morph = Track.builder()
+                .name("Morph")
+                .lengthInSeconds(260)
+                .numberOfLikes(33996404)
+                .albumPosition(3)
+                .album(trench)
+                .artist(twentyOnePilots)
+                .build();
+        trackRepository.save(morph);
+
+        Track myBlood = Track.builder()
+                .name("MyBlood")
+                .lengthInSeconds(236)
+                .numberOfLikes(83328040)
+                .albumPosition(4)
+                .album(trench)
+                .artist(twentyOnePilots)
+                .build();
+        trackRepository.save(myBlood);
+
+        Track astronomicalTrack = Track.builder()
+                .name("Astronomical")
+                .lengthInSeconds(196)
+                .numberOfLikes(197002)
+                .albumPosition(1)
+                .album(astronomical)
+                .artist(maskedWolf)
+                .build();
+        trackRepository.save(astronomicalTrack);
+
+        Track gravityGlidin = Track.builder()
+                .name("Gravity Glidin")
+                .lengthInSeconds(141)
+                .numberOfLikes(2426700)
+                .albumPosition(2)
+                .album(astronomical)
+                .artist(maskedWolf)
+                .build();
+        trackRepository.save(gravityGlidin);
     }
+
 }

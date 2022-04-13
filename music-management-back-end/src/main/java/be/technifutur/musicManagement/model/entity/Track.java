@@ -12,19 +12,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter @Setter
 @Builder
 @Entity
-@Table(name = "album")
-public class Album {
+@Table(name = "track")
+public class Track {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,19 +30,31 @@ public class Album {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "release_date", nullable = true)
-    private LocalDate releaseDate;
+    @Column(
+        name = "length_in_seconds",
+        columnDefinition = "INT(11)",
+        nullable = false
+    )
+    private int lengthInSeconds;
 
-    @Column(name = "record_label", nullable = true)
-    private String recordLabel;
+    @Column(
+        name = "number_of_likes",
+        columnDefinition = "INT(11)",
+        nullable = false
+    )
+    private int numberOfLikes;
 
-    @Column(name = "image_url", nullable = true)
-    private String imageUrl;
+    @Column(
+        name = "album_position",
+        columnDefinition = "INT(11)",
+        nullable = false
+    )
+    private int albumPosition;
+
+    @ManyToOne
+    private Album album;
 
     @ManyToOne
     private Artist artist;
-
-    @OneToMany(mappedBy = "album")
-    private List<Track> tracks = new ArrayList<>();
 
 }
