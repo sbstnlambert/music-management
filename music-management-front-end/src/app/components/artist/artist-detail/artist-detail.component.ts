@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Album } from 'src/app/model/album.model';
+import { Artist } from 'src/app/model/artist.model';
+import { AlbumService } from 'src/app/service/album.service';
+import { ArtistService } from 'src/app/service/artist.service';
 
 @Component({
   selector: 'app-artist-detail',
@@ -7,7 +12,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArtistDetailComponent implements OnInit {
 
-  constructor() { }
+  public artist!: Artist;
+  public albums!: Array<Album>;
+
+  constructor(
+    private route: ActivatedRoute, 
+    private albumService: AlbumService,
+    private artistService: ArtistService
+  ) {
+    let artistIdString: string | null = route.snapshot.paramMap.get('id');
+    let artistId: number = artistIdString ? parseInt(artistIdString) : -1;
+
+    if (artistId && artistId > 0) {
+      this.artistService.getArtistById(artistId).subscribe({
+        next: artist => this.artist = artist,
+        error: () => console.log("An error has occured while communicating with the back-end service")
+      });
+
+      this.albumService.getAlbumsByArtist(artistId).subscribe({
+        next: albums => this.albums = albums,
+        error: () => console.log("An error has occured while communicating with the back-end service")
+      });
+    } else {
+      alert('Id invalide');
+    }
+  }
 
   ngOnInit(): void {
   }

@@ -8,17 +8,13 @@ import { ArtistService } from 'src/app/service/artist.service';
   styleUrls: ['./artists-list.component.scss']
 })
 export class ArtistsListComponent implements OnInit {
-  private _artists!: Array<Artist>;
+  public artists!: Array<Artist>;
 
   constructor(private artistService: ArtistService) { }
 
-  public get artists(): Array<Artist> {
-    return this._artists.slice();
-  }
-
   ngOnInit(): void {
     this.artistService.getAllArtists().subscribe({
-      next: artists => this._artists = artists,
+      next: artists => this.artists = artists,
       error: () => console.log("An error has occured during the communication with the back-end service")
     })
   }

@@ -1,4 +1,12 @@
-<div class="m-5 d-flex justify-content-center flex-row flex-wrap">
-    <app-artist-card *ngFor="let artist of artists" 
-                     [artist]="artist"></app-artist-card>
+<ng-template #loading>
+    <div>
+        <p>Loading...</p>
+    </div>
+</ng-template>
+
+<div *ngIf="artists; else loading">
+    <div class="m-5 d-flex justify-content-center flex-row flex-wrap">
+        <app-artist-card *ngFor="let artist of artists" 
+                        [artist]="artist"></app-artist-card>
+    </div>
 </div>
