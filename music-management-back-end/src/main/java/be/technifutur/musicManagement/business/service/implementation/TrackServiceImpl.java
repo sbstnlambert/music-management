@@ -33,4 +33,12 @@ public class TrackServiceImpl implements TrackService {
                 .toList();
     }
 
+    @Override
+    public List<TrackSimpleDTO> getTracksByArtist(Long artistId) {
+        return this.repository.findTracksByArtist(artistId)
+                .stream()
+                .map(mapper::entityToSimpleDTO)
+                .toList();
+    }
+
 }
