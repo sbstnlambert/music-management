@@ -20,7 +20,7 @@ export class AlbumDetailedComponent implements OnInit {
     private albumService: AlbumService,
     private trackService: TrackService
   ) {
-    let albumIdString: string | null = route.snapshot.paramMap.get('id');
+    let albumIdString: string | null = this.route.snapshot.paramMap.get('id');
     let albumId: number = albumIdString ? parseInt(albumIdString) : -1;
 
     if (albumId && albumId > 0) {
