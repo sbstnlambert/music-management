@@ -30,4 +30,10 @@ public class TrackController {
         return this.service.getTracksByAlbum(albumId);
     }
 
+    // GET - http://localhost:8080/track/artist/:artistId
+    @GetMapping("/artist/{artistId}")
+    public List<TrackSimpleDTO> getTracksByArtist(@PathVariable Long artistId) {
+        return this.service.getTracksByArtist(artistId);
+    }
+
 }

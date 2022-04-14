@@ -25,6 +25,15 @@ public class TrackServiceMock implements TrackService {
 
     @Override
     public List<TrackSimpleDTO> getTracksByAlbum(Long albumId) {
+        return getTrackSimpleDTOList();
+    }
+
+    @Override
+    public List<TrackSimpleDTO> getTracksByArtist(Long artistId) {
+        return getTrackSimpleDTOList();
+    }
+
+    private List<TrackSimpleDTO> getTrackSimpleDTOList()  {
         List<TrackSimpleDTO> mockList = new ArrayList<>();
         mockList.add(
                 TrackSimpleDTO.builder()
@@ -63,5 +72,4 @@ public class TrackServiceMock implements TrackService {
         );
         return mockList;
     }
-
 }
