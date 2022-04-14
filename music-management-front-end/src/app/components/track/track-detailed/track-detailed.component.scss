@@ -1,0 +1,78 @@
+.grid-2-columns {
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-row-gap: 16px;
+    grid-column-gap: 40px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+}
+
+.container-custom {
+	width: fit-content;
+	margin: 5rem auto 0;
+}
+
+.youtube-frame {
+	position: relative;
+	width: 560px;
+	height: 315px;
+	background-image: url("../../../../assets/youtube-frame-small.png");
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.youtube-button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	left: 246px;
+	top: 133px;
+	width: 68px;
+	height: 48px;
+	background-color: rgba(0, 0, 0, 0.6);
+	border: none;
+	border-radius: 10px;
+}
+
+.youtube-triangle {
+	width: 18px;
+	height: 20px;
+	background-color: white;
+	clip-path: polygon(0 0, 0% 100%, 100% 50%);
+}
+
+.youtube-button--purple {
+	animation: 0.3s ease-in blackToPurple forwards;
+}
+
+.youtube-button--black {
+	animation: 0.3s ease-in purpleToBlack forwards;
+}
+
+.logo {
+	width: 50px;
+	position: absolute;
+	top: 10px;
+	left: 10px;
+}
+
+@keyframes blackToPurple {
+  from {
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+
+  to {
+    background-color: #6961ff;
+  }
+}
+
+@keyframes purpleToBlack {
+  from {
+    background-color: #6961ff;
+  }
+
+  to {
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+}
