@@ -21,4 +21,10 @@ li {
 
 .card:hover {
     filter: brightness(70%);
+    cursor: pointer;
+}
+
+.track-banner:hover {
+    filter: brightness(90%);
+    cursor: pointer;
 }
