@@ -4,8 +4,8 @@ MUSIC MANAGEMENT APP - REST API
 ===============================
 
 Artist
-	. GET    - /artist                   -->   + getAllArtists()                         : List<ArtistDTO>
-	. GET    - /artist/:id               -->   + getArtistById(id: Long)                 : ArtistDTO
+	. GET    - /artist                   -->   + getAllArtists()                         : List<ArtistDTO>        DONE
+	. GET    - /artist/:id               -->   + getArtistById(id: Long)                 : ArtistDTO              DONE
 	. POST   - /artist/add               -->   + insertArtist(artistForm: ArtistForm)    : ArtistDTO
 	. PUT    - /artist/:id               -->   + updateArtistById(id: Long, name: String): ArtistDTO
 	. DELETE - /artist/:id               -->   + deleteArtistById(id: Long)              : ArtistDTO
@@ -20,17 +20,17 @@ Genre
 	
 	
 Album
-	. GET    - /album/artist/:artistId   -->   + getAlbumsByArtist(artistId: Long)              : List<AlbumDTO>
-	. GET    - /album/:id                -->   + getAlbumById(id: Long)                         : AlbumDTO
+	. GET    - /album/artist/:artistId   -->   + getAlbumsByArtist(artistId: Long)              : List<AlbumDTO>  DONE
+	. GET    - /album/:id                -->   + getAlbumById(id: Long)                         : AlbumDTO        DONE
 	. POST   - /album/add                -->   + insertAlbum(albumForm: AlbumForm)              : AlbumDTO
 	. PUT    - /album/:id                -->   + updateAlbumById(id: Long, albumForm: AlbumForm): AlbumDTO
 	. DELETE - /album/:id                -->   + deleteAlbumById(id: Long)                      : AlbumDTO
 	
 
 Track
-	. GET    - /track/artist/:artistId   -->   + getTracksByArtist(artistId: Long)              : List<TrackDTO>
-	. GET    - /track/album/:albumId     -->   + getTracksByAlbum(albumId: Long)                : List<TrackDTO>
-	. GET    - /track/:id                -->   + getTrackById(id: Long)                         : TrackDTO
+	. GET    - /track/artist/:artistId   -->   + getTracksByArtist(artistId: Long)              : List<TrackDTO>  DONE
+	. GET    - /track/album/:albumId     -->   + getTracksByAlbum(albumId: Long)                : List<TrackDTO>  DONE
+	. GET    - /track/:id                -->   + getTrackById(id: Long)                         : TrackDTO        DONE
 	. POST   - /track/add                -->   + insertTrack(trackForm: TrackForm)              : TrackDTO
 	. PUT    - /track/:id                -->   + updateTrackById(id: Long, trackForm: TrackForm): TrackDTO
 	. DELETE - /track/:id                -->   + removeTrackById(id: Long)                      : TrackDTO
