@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { TrackSimple } from 'src/app/model/track.model';
 
 @Component({
@@ -11,9 +12,13 @@ export class TrackBannerComponent implements OnInit {
   @Input()
   track!: TrackSimple;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  public onClick(): void {
+    this.router.navigate(['track', this.track.id]);
   }
 
 }
