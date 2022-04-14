@@ -1,6 +1,7 @@
 package be.technifutur.musicManagement.controller;
 
 import be.technifutur.musicManagement.business.service.specification.TrackService;
+import be.technifutur.musicManagement.model.dto.TrackDetailedDTO;
 import be.technifutur.musicManagement.model.dto.TrackSimpleDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +17,12 @@ import java.util.List;
 public class TrackController {
 
     private final TrackService service;
+
+    // GET - http://localhost:8080/track/:id
+    @GetMapping("/{id}")
+    public TrackDetailedDTO getTrackById(@PathVariable Long id) {
+        return this.service.getTrackById(id);
+    }
 
     // GET - http://localhost:8080/track/album/:albumId
     @GetMapping("/album/{albumId}")
