@@ -23,7 +23,7 @@
             </li>
         </ul>
         <div class="container-custom">
-            <a target="_blank" href="https://www.youtube.com/watch?v=eJnQBXmZ7Ek">
+            <a target="_blank" href="{{ track.videoUrl }}">
                 <div class="youtube-frame" (mouseenter)="onHover()" (mouseleave)="onHover()">
                     <img class="logo" src="assets/logo/logo_small_icon_only_inverted.png" alt="Logo Songs." />
                     <button [ngClass]="{'youtube-button': true, 
