@@ -34,7 +34,7 @@ export class ArtistDetailComponent implements OnInit {
         error: () => console.log("An error has occured while communicating with the back-end service")
       });
     } else {
-      alert('Id invalide');
+      alert('Invalid ID');
     }
   }
 

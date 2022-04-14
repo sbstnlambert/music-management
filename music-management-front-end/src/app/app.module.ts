@@ -10,6 +10,9 @@ import { Error404Component } from './components/error404/error404.component';
 import { ArtistCardComponent } from './components/artist/artist-card/artist-card.component';
 import { ArtistDetailComponent } from './components/artist/artist-detail/artist-detail.component';
 import { AlbumCardComponent } from './components/album/album-card/album-card.component';
+import { AlbumDetailedComponent } from './components/album/album-detailed/album-detailed.component';
+import { TrackDetailedComponent } from './components/track/track-detailed/track-detailed.component';
+import { TrackBannerComponent } from './components/track/track-banner/track-banner.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import { AlbumCardComponent } from './components/album/album-card/album-card.com
     Error404Component,
     ArtistCardComponent,
     ArtistDetailComponent,
-    AlbumCardComponent
+    AlbumCardComponent,
+    AlbumDetailedComponent,
+    TrackDetailedComponent,
+    TrackBannerComponent
   ],
   imports: [
     BrowserModule,
