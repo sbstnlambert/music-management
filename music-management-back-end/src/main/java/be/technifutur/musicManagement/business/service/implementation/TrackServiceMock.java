@@ -15,7 +15,8 @@ public class TrackServiceMock implements TrackService {
                 TrackSimpleDTO.builder()
                         .id(1L)
                         .name("Jumpsuit")
-                        .numberOfLikes(116452548)
+                        .albumPosition(1)
+                        .numberOfLikes(116452548L)
                         .build()
         );
 
@@ -23,7 +24,8 @@ public class TrackServiceMock implements TrackService {
                 TrackSimpleDTO.builder()
                         .id(2L)
                         .name("Levitate")
-                        .numberOfLikes(38584678)
+                        .albumPosition(2)
+                        .numberOfLikes(38584678L)
                         .build()
         );
 
@@ -31,7 +33,8 @@ public class TrackServiceMock implements TrackService {
                 TrackSimpleDTO.builder()
                         .id(3L)
                         .name("Morph")
-                        .numberOfLikes(33996404)
+                        .albumPosition(3)
+                        .numberOfLikes(33996404L)
                         .build()
         );
 
@@ -39,7 +42,8 @@ public class TrackServiceMock implements TrackService {
                 TrackSimpleDTO.builder()
                         .id(4L)
                         .name("My Blood")
-                        .numberOfLikes(83328040)
+                        .albumPosition(4)
+                        .numberOfLikes(83328040L)
                         .build()
         );
         return mockList;

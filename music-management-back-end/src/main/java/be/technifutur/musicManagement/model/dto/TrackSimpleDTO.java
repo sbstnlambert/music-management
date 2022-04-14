@@ -9,6 +9,7 @@ public class TrackSimpleDTO {
 
     private Long id;
     private String name;
-    private int numberOfLikes;
+    private int albumPosition;
+    private Long numberOfLikes;
 
 }

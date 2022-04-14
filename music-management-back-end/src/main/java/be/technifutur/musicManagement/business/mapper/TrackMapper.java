@@ -13,6 +13,7 @@ public class TrackMapper {
         return TrackSimpleDTO.builder()
                 .id(entity.getId())
                 .name(entity.getName())
+                .albumPosition(entity.getAlbumPosition())
                 .numberOfLikes(entity.getNumberOfLikes())
                 .build();
     }

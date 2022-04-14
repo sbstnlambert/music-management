@@ -39,10 +39,9 @@ public class Track {
 
     @Column(
         name = "number_of_likes",
-        columnDefinition = "INT(11)",
         nullable = false
     )
-    private int numberOfLikes;
+    private Long numberOfLikes;
 
     @Column(
         name = "album_position",
