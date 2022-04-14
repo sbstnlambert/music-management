@@ -12,14 +12,7 @@ import { TrackService } from 'src/app/service/track.service';
 })
 export class AlbumDetailedComponent implements OnInit {
 
-  public album: Album = {
-    id: 1,
-    name: 'Blurry Face',
-    imageUrl: 'https://bit.ly/3KEwcUU',
-    releaseDate: new Date("2015-10-12"),
-    recordLabel: 'Fueled By Ramen'
-  };
-
+  public album!: Album;
   public tracks!: Array<TrackSimple>;
 
   constructor(
@@ -31,10 +24,10 @@ export class AlbumDetailedComponent implements OnInit {
     let albumId: number = albumIdString ? parseInt(albumIdString) : -1;
 
     if (albumId && albumId > 0) {
-      // this.albumService.getAlbumById(albumId).subscribe({
-      //   next: album => this.album = album,
-      //   error: () => console.log('An error has occured while communicating with the back-end service')
-      // });
+      this.albumService.getAlbumById(albumId).subscribe({
+        next: album => this.album = album,
+        error: () => console.log('An error has occured while communicating with the back-end service')
+      });
 
       this.trackService.getTracksByAlbum(albumId).subscribe({
         next: tracks => this.tracks = tracks,
