@@ -1,6 +1,7 @@
 export interface TrackSimple {
     id: number;
-    name: String;
+    name: string;
+    albumPosition: number;
     numberOfLikes: number;
 }
 
@@ -9,5 +10,8 @@ export interface TrackDetailed {
     name: string;
     lengthInSeconds: number;
     numberOfLikes: number;
-    albumPosition: number;
+    artistName: string;
+    albumName: string;
+    albumGenres: Array<string>;
+    videoUrl: string;
 }
