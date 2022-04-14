@@ -16,5 +16,6 @@ public class TrackDetailedDTO {
     private String artistName;
     private String albumName;
     private List<String> albumGenres;
+    private String videoUrl;
 
 }

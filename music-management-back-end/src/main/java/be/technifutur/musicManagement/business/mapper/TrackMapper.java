@@ -38,6 +38,7 @@ public class TrackMapper {
                                 .map(Genre::getName)
                                 .toList()
                 )
+                .videoUrl(entity.getVideoUrl())
                 .build();
     }
 }

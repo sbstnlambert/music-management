@@ -23,6 +23,7 @@ import java.util.List;
 @Entity
 @Table(name = "genre")
 public class Genre {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -33,4 +34,5 @@ public class Genre {
 
     @ManyToMany(mappedBy = "genres")
     private List<Album> albums = new ArrayList<>();
+
 }

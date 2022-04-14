@@ -3,10 +3,8 @@ package be.technifutur.musicManagement.business.service.implementation;
 import be.technifutur.musicManagement.business.service.specification.TrackService;
 import be.technifutur.musicManagement.model.dto.TrackDetailedDTO;
 import be.technifutur.musicManagement.model.dto.TrackSimpleDTO;
-import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class TrackServiceMock implements TrackService {
