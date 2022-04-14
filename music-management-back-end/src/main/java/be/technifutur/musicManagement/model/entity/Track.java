@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -39,10 +40,9 @@ public class Track {
 
     @Column(
         name = "number_of_likes",
-        columnDefinition = "INT(11)",
         nullable = false
     )
-    private int numberOfLikes;
+    private Long numberOfLikes;
 
     @Column(
         name = "album_position",
@@ -51,10 +51,15 @@ public class Track {
     )
     private int albumPosition;
 
+    @Column(name = "video_url")
+    private String videoUrl;
+
     @ManyToOne
+    @JoinColumn(nullable = false)
     private Album album;
 
     @ManyToOne
+    @JoinColumn(nullable = false)
     private Artist artist;
 
 }

@@ -1,6 +1,7 @@
 package be.technifutur.musicManagement.business.service.implementation;
 
 import be.technifutur.musicManagement.business.service.specification.TrackService;
+import be.technifutur.musicManagement.model.dto.TrackDetailedDTO;
 import be.technifutur.musicManagement.model.dto.TrackSimpleDTO;
 
 import java.util.ArrayList;
@@ -9,13 +10,28 @@ import java.util.List;
 public class TrackServiceMock implements TrackService {
 
     @Override
+    public TrackDetailedDTO getTrackById(Long id) {
+        return TrackDetailedDTO.builder()
+                .id(1L)
+                .name("Jumpsuit")
+                .lengthInSeconds(299)
+                .numberOfLikes(116452548L)
+                .artistName("Twenty One Pilots")
+                .albumName("Trench")
+                .albumGenres(null)
+                .build();
+
+    }
+
+    @Override
     public List<TrackSimpleDTO> getTracksByAlbum(Long albumId) {
         List<TrackSimpleDTO> mockList = new ArrayList<>();
         mockList.add(
                 TrackSimpleDTO.builder()
                         .id(1L)
                         .name("Jumpsuit")
-                        .numberOfLikes(116452548)
+                        .albumPosition(1)
+                        .numberOfLikes(116452548L)
                         .build()
         );
 
@@ -23,7 +39,8 @@ public class TrackServiceMock implements TrackService {
                 TrackSimpleDTO.builder()
                         .id(2L)
                         .name("Levitate")
-                        .numberOfLikes(38584678)
+                        .albumPosition(2)
+                        .numberOfLikes(38584678L)
                         .build()
         );
 
@@ -31,7 +48,8 @@ public class TrackServiceMock implements TrackService {
                 TrackSimpleDTO.builder()
                         .id(3L)
                         .name("Morph")
-                        .numberOfLikes(33996404)
+                        .albumPosition(3)
+                        .numberOfLikes(33996404L)
                         .build()
         );
 
@@ -39,7 +57,8 @@ public class TrackServiceMock implements TrackService {
                 TrackSimpleDTO.builder()
                         .id(4L)
                         .name("My Blood")
-                        .numberOfLikes(83328040)
+                        .albumPosition(4)
+                        .numberOfLikes(83328040L)
                         .build()
         );
         return mockList;
