@@ -2,15 +2,20 @@ package be.technifutur.musicManagement.utils;
 
 import be.technifutur.musicManagement.model.entity.Album;
 import be.technifutur.musicManagement.model.entity.Artist;
+import be.technifutur.musicManagement.model.entity.Genre;
 import be.technifutur.musicManagement.model.entity.Track;
 import be.technifutur.musicManagement.repository.AlbumRepository;
 import be.technifutur.musicManagement.repository.ArtistRepository;
+import be.technifutur.musicManagement.repository.GenreRepository;
 import be.technifutur.musicManagement.repository.TrackRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @Component
 @AllArgsConstructor
@@ -19,6 +24,7 @@ public class DatabaseFiller implements InitializingBean {
     private final ArtistRepository artistRepository;
     private final AlbumRepository albumRepository;
     private final TrackRepository trackRepository;
+    private final GenreRepository genreRepository;
 
     @Override
     public void afterPropertiesSet() throws Exception {
@@ -90,6 +96,38 @@ public class DatabaseFiller implements InitializingBean {
                 .build();
         artistRepository.save(imagineDragons);
 
+        /* GENRE CREATION */
+
+        Genre hipHop = Genre.builder()
+                .name("Hip-Hop")
+                .build();
+        genreRepository.save(hipHop);
+
+        Genre rap = Genre.builder()
+                .name("Rap")
+                .build();
+        genreRepository.save(rap);
+
+        Genre rock = Genre.builder()
+                .name("Rock")
+                .build();
+        genreRepository.save(rock);
+
+        Genre metal = Genre.builder()
+                .name("Metal")
+                .build();
+        genreRepository.save(metal);
+
+        Genre pop = Genre.builder()
+                .name("Pop")
+                .build();
+        genreRepository.save(pop);
+
+        Genre french = Genre.builder()
+                .name("French")
+                .build();
+        genreRepository.save(french);
+
         /* ALBUM CREATION */
 
         Album trench = Album.builder()
@@ -98,6 +136,7 @@ public class DatabaseFiller implements InitializingBean {
                 .recordLabel("Fueled By Ramen")
                 .imageUrl("https://bit.ly/3jx0uwT")
                 .artist(twentyOnePilots)
+                .genres(Arrays.asList(rock, hipHop, rap))
                 .build();
         albumRepository.save(trench);
 
@@ -107,6 +146,7 @@ public class DatabaseFiller implements InitializingBean {
                 .recordLabel("Fueled By Ramen")
                 .imageUrl("https://bit.ly/3KFCvre")
                 .artist(twentyOnePilots)
+                .genres(Arrays.asList(pop, hipHop))
                 .build();
         albumRepository.save(blurryFace);
 
@@ -116,6 +156,7 @@ public class DatabaseFiller implements InitializingBean {
                 .recordLabel("Fueled By Ramen")
                 .imageUrl("https://bit.ly/3JxHA3j")
                 .artist(twentyOnePilots)
+                .genres(Arrays.asList(pop, hipHop))
                 .build();
         albumRepository.save(scaledAndIcy);
 
@@ -125,8 +166,19 @@ public class DatabaseFiller implements InitializingBean {
                 .recordLabel("New Space Rap")
                 .imageUrl("https://bit.ly/3JDb3sE")
                 .artist(maskedWolf)
+                .genres(List.of(rap, hipHop))
                 .build();
         albumRepository.save(astronomical);
+
+        Album deutschland = Album.builder()
+                .name("Deutschland")
+                .releaseDate(LocalDate.of(2019, 4, 27))
+                .recordLabel("Rammstein record")
+                .imageUrl("https://bit.ly/3xrJ1Ot")
+                .artist(rammstein)
+                .genres(List.of(metal))
+                .build();
+        albumRepository.save(deutschland);
 
         /* TRACK CREATION */
 
@@ -189,6 +241,16 @@ public class DatabaseFiller implements InitializingBean {
                 .artist(maskedWolf)
                 .build();
         trackRepository.save(gravityGlidin);
+
+        Track deutschlandTrack = Track.builder()
+                .name("Deutschland")
+                .lengthInSeconds(365)
+                .numberOfLikes(2400000L)
+                .albumPosition(1)
+                .album(deutschland)
+                .artist(rammstein)
+                .build();
+        trackRepository.save(deutschlandTrack);
     }
 
 }

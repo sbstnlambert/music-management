@@ -6,6 +6,7 @@ import be.technifutur.musicManagement.model.dto.TrackSimpleDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class TrackServiceMock implements TrackService {
@@ -19,10 +20,7 @@ public class TrackServiceMock implements TrackService {
                 .numberOfLikes(116452548L)
                 .artistName("Twenty One Pilots")
                 .albumName("Trench")
-                .albumGenres(new String[]{
-                        "Alternative hip-hop",
-                        "Alternative rock"
-                })
+                .albumGenres(null)
                 .build();
 
     }

@@ -3,6 +3,8 @@ package be.technifutur.musicManagement.model.dto;
 import lombok.Builder;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 @Builder
 public class TrackDetailedDTO {
@@ -13,6 +15,6 @@ public class TrackDetailedDTO {
     private Long numberOfLikes;
     private String artistName;
     private String albumName;
-    private String[] albumGenres;
+    private List<String> albumGenres;
 
 }

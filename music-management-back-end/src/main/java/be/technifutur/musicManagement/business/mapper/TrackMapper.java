@@ -2,6 +2,7 @@ package be.technifutur.musicManagement.business.mapper;
 
 import be.technifutur.musicManagement.model.dto.TrackDetailedDTO;
 import be.technifutur.musicManagement.model.dto.TrackSimpleDTO;
+import be.technifutur.musicManagement.model.entity.Genre;
 import be.technifutur.musicManagement.model.entity.Track;
 import org.springframework.stereotype.Service;
 
@@ -30,7 +31,13 @@ public class TrackMapper {
                 .numberOfLikes(entity.getNumberOfLikes())
                 .artistName(entity.getArtist().getName())
                 .albumName(entity.getAlbum().getName())
-                .albumGenres(null)
+                .albumGenres(
+                        entity.getAlbum()
+                                .getGenres()
+                                .stream()
+                                .map(Genre::getName)
+                                .toList()
+                )
                 .build();
     }
 }
