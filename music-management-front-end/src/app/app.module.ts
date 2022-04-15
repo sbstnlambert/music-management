@@ -14,6 +14,8 @@ import { AlbumDetailedComponent } from './components/album/album-detailed/album-
 import { TrackDetailedComponent } from './components/track/track-detailed/track-detailed.component';
 import { TrackBannerComponent } from './components/track/track-banner/track-banner.component';
 import { NumberSuffixPipe } from './pipe/number-suffix.pipe';
+import { ArtistFormComponent } from './components/artist/form/artist-form/artist-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,12 +29,14 @@ import { NumberSuffixPipe } from './pipe/number-suffix.pipe';
     AlbumDetailedComponent,
     TrackDetailedComponent,
     TrackBannerComponent,
-    NumberSuffixPipe
+    NumberSuffixPipe,
+    ArtistFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

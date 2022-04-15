@@ -4,6 +4,8 @@ import be.technifutur.musicManagement.business.mapper.ArtistMapper;
 import be.technifutur.musicManagement.business.service.specification.ArtistService;
 import be.technifutur.musicManagement.exception.ElementNotFoundException;
 import be.technifutur.musicManagement.model.dto.ArtistDTO;
+import be.technifutur.musicManagement.model.entity.Artist;
+import be.technifutur.musicManagement.model.form.ArtistForm;
 import be.technifutur.musicManagement.repository.ArtistRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,6 +18,13 @@ public class ArtistServiceImpl implements ArtistService {
 
     private final ArtistRepository repository;
     private final ArtistMapper mapper;
+
+    @Override
+    public ArtistDTO insertArtist(ArtistForm form) {
+        Artist entity = mapper.formToEntity(form);
+        entity = repository.save(entity);
+        return mapper.entityToDTO(entity);
+    }
 
     @Override
     public List<ArtistDTO> getAllArtists() {

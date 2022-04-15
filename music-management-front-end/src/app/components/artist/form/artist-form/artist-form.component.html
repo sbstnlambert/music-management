@@ -1,0 +1,41 @@
+<div class="container d-flex justify-content-center align-items-center pt-5 pb-5">
+    <h2>Insert a new artist</h2>
+</div> 
+
+<form class="container-sm"
+        style="max-width: 550px;"
+        [formGroup]="artistForm"
+        (ngSubmit)="onSubmit()">
+
+    <div class="mb-3">
+        <label for="name" 
+                class="form-label">
+                Artist name
+        </label>
+        <input type="text"
+                class="form-control"
+                id="name"
+                placeholder="My amazing artist name"
+                formControlName="name">
+    </div>
+
+    <label for="image-url"
+            class="form-label">
+            Logo URL
+    </label>
+    <div class="input-group mb-3">
+        <span class="input-group-text"
+            id="basic-addon3">
+            https://bit.ly/ 
+        </span>
+        <input type="text"
+            class="form-control" 
+            id="image-url" 
+            aria-describedby="basic-addon3"
+            formControlName="imageUrl">
+    </div>
+
+    <button type="submit"
+            class="btn btn-outline-primary">Add a new artist</button>
+
+</form>

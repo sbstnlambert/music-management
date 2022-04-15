@@ -29,10 +29,10 @@ public class Artist {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name", nullable = false, unique = true)
     private String name;
 
-    @Column(name = "image_url", nullable = true)
+    @Column(name = "image_url")
     private String imageUrl;
 
     @OneToMany(mappedBy = "artist")
