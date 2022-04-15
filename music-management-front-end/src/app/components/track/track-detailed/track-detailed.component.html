@@ -9,6 +9,18 @@
         <h2>{{ track.name }}</h2>
     </div>    
     <div>
+        <div class="container-custom">
+            <a target="_blank" href="{{ track.videoUrl }}">
+                <div class="youtube-frame" (mouseenter)="onHover()" (mouseleave)="onHover()">
+                    <img class="logo" src="assets/logo/logo_small_icon_only_inverted.png" alt="Logo Songs." />
+                    <button [ngClass]="{'youtube-button': true, 
+                                        'youtube-button--black': !isHovered && isInitialized, 
+                                        'youtube-button--purple': isHovered}">
+                        <div class="youtube-triangle"></div>
+                    </button>
+                </div>
+            </a>
+        </div>
         <ul class="grid-2-columns container-sm">
             <li class="d-flex justify-content-between align-items-center">Title: {{ track.name }}</li>
             <li class="d-flex justify-content-between align-items-center">Length: {{ track.lengthInSeconds *1000 | date:'mm:ss' }}</li>
@@ -22,17 +34,5 @@
                 </ul>
             </li>
         </ul>
-        <div class="container-custom">
-            <a target="_blank" href="{{ track.videoUrl }}">
-                <div class="youtube-frame" (mouseenter)="onHover()" (mouseleave)="onHover()">
-                    <img class="logo" src="assets/logo/logo_small_icon_only_inverted.png" alt="Logo Songs." />
-                    <button [ngClass]="{'youtube-button': true, 
-                                        'youtube-button--black': !isHovered && isInitialized, 
-                                        'youtube-button--purple': isHovered}">
-                        <div class="youtube-triangle"></div>
-                    </button>
-                </div>
-            </a>
-        </div>
     </div>
 </div>
