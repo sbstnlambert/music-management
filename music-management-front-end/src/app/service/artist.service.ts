@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, retry } from 'rxjs';
-import { ArtistFormComponent } from '../components/artist/form/artist-form/artist-form.component';
+import { Observable } from 'rxjs';
 import { Artist, ArtistForm } from '../model/artist.model';
 
 @Injectable({
@@ -23,5 +22,9 @@ export class ArtistService {
 
   public getArtistById(id: number): Observable<Artist> {
     return this.http.get<Artist>(`${this.BASE_URL}/${id}`);
+  }
+
+  public getArtistsByNameWithAutocomplete(nameFragment: string): Observable<Array<Artist>> {
+    return this.http.get<Array<Artist>>(`${this.BASE_URL}/search?name=${nameFragment}`);
   }
 }

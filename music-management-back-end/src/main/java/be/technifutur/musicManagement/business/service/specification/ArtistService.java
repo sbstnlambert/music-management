@@ -11,7 +11,8 @@ public interface ArtistService {
     ArtistDTO insertArtist(ArtistForm form);
 
     // READ
-    List<ArtistDTO> getAllArtists();
     ArtistDTO getArtistById(Long id);
+    List<ArtistDTO> getArtistsByNameWithAutocomplete(String nameFragment);
+    List<ArtistDTO> getAllArtists();
 
 }
