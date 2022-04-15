@@ -29,7 +29,7 @@ public class Artist {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "name", unique = true)
+    @Column(name = "name", nullable = false, unique = true)
     private String name;
 
     @Column(name = "image_url")
