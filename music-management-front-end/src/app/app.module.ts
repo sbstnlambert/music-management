@@ -13,6 +13,7 @@ import { AlbumCardComponent } from './components/album/album-card/album-card.com
 import { AlbumDetailedComponent } from './components/album/album-detailed/album-detailed.component';
 import { TrackDetailedComponent } from './components/track/track-detailed/track-detailed.component';
 import { TrackBannerComponent } from './components/track/track-banner/track-banner.component';
+import { NumberSuffixPipe } from './pipe/number-suffix.pipe';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { TrackBannerComponent } from './components/track/track-banner/track-bann
     AlbumCardComponent,
     AlbumDetailedComponent,
     TrackDetailedComponent,
-    TrackBannerComponent
+    TrackBannerComponent,
+    NumberSuffixPipe
   ],
   imports: [
     BrowserModule,
