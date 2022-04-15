@@ -16,16 +16,22 @@ public class ArtistController {
 
     private final ArtistService service;
 
-    // GET - http://localhost:8080/artist
-    @GetMapping
-    public List<ArtistDTO> getAllArtists() {
-        return service.getAllArtists();
-    }
-
     // GET - http://localhost:8080/artist/id
     @GetMapping("/{id}")
     public ResponseEntity<ArtistDTO> getArtistById(@PathVariable Long id) {
-        return ResponseEntity.ok(service.getArtistById(id));
+        return ResponseEntity.ok(this.service.getArtistById(id));
+    }
+
+    // GET - http://localhost:8080/artist/search?name=...
+    @GetMapping("/search")
+    public List<ArtistDTO> getArtistsByNameWithAutocomplete(@RequestParam(name = "name") String nameFragment) {
+        return this.service.getArtistsByNameWithAutocomplete(nameFragment);
+    }
+
+    // GET - http://localhost:8080/artist
+    @GetMapping
+    public List<ArtistDTO> getAllArtists() {
+        return this.service.getAllArtists();
     }
 
     // POST - http://localhost:8080/artist/add
