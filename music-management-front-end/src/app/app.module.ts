@@ -15,7 +15,7 @@ import { TrackDetailedComponent } from './components/track/track-detailed/track-
 import { TrackBannerComponent } from './components/track/track-banner/track-banner.component';
 import { NumberSuffixPipe } from './pipe/number-suffix.pipe';
 import { ArtistFormComponent } from './components/artist/form/artist-form/artist-form.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -36,7 +36,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
