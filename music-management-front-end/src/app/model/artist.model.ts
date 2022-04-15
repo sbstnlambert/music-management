@@ -3,3 +3,8 @@ export interface Artist {
     name: String;
     imageUrl: String;
 }
+
+export interface ArtistForm {
+    name: String;
+    imageUrl: String;
+}
