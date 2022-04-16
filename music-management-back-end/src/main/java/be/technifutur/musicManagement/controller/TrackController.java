@@ -4,10 +4,7 @@ import be.technifutur.musicManagement.business.service.specification.TrackServic
 import be.technifutur.musicManagement.model.dto.TrackDetailedDTO;
 import be.technifutur.musicManagement.model.dto.TrackSimpleDTO;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,6 +19,12 @@ public class TrackController {
     @GetMapping("/{id}")
     public TrackDetailedDTO getTrackById(@PathVariable Long id) {
         return this.service.getTrackById(id);
+    }
+
+    // GET - http://localhost:8080/track/search?name
+    @GetMapping("/search")
+    public List<TrackSimpleDTO> getTracksByNameWithAutocomplete(@RequestParam(name = "name") String nameFragment) {
+        return this.service.getTracksByNameWithAutocomplete(nameFragment);
     }
 
     // GET - http://localhost:8080/track/album/:albumId

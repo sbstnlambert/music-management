@@ -26,6 +26,14 @@ public class TrackServiceImpl implements TrackService {
     }
 
     @Override
+    public List<TrackSimpleDTO> getTracksByNameWithAutocomplete(String nameFragment) {
+        return this.repository.findTracksByNameWithAutocomplete(nameFragment)
+                .stream()
+                .map(mapper::entityToSimpleDTO)
+                .toList();
+    }
+
+    @Override
     public List<TrackSimpleDTO> getTracksByAlbum(Long albumId) {
         return this.repository.findTracksByAlbum(albumId)
                 .stream()

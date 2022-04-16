@@ -9,6 +9,7 @@ public interface TrackService {
 
     // READ
     TrackDetailedDTO getTrackById(Long id);
+    List<TrackSimpleDTO> getTracksByNameWithAutocomplete(String nameFragment);
     List<TrackSimpleDTO> getTracksByAlbum(Long albumId);
     List<TrackSimpleDTO> getTracksByArtist(Long artistId);
 

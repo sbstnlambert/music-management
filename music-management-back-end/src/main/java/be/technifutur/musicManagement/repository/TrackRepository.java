@@ -14,4 +14,7 @@ public interface TrackRepository extends JpaRepository<Track, Long> {
     @Query("SELECT t FROM Track t WHERE t.artist.id = ?1")
     List<Track> findTracksByArtist(Long artistId);
 
+    @Query("SELECT t FROM Track t WHERE LOWER(t.name) LIKE LOWER(CONCAT('%',?1,'%'))")
+    List<Track> findTracksByNameWithAutocomplete(String nameFragment);
+
 }

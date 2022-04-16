@@ -24,6 +24,11 @@ public class TrackServiceMock implements TrackService {
     }
 
     @Override
+    public List<TrackSimpleDTO> getTracksByNameWithAutocomplete(String nameFragment) {
+        return getTrackSimpleDTOList();
+    }
+
+    @Override
     public List<TrackSimpleDTO> getTracksByAlbum(Long albumId) {
         return getTrackSimpleDTOList();
     }
