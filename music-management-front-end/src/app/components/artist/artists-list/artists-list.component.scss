@@ -2,12 +2,13 @@
     filter: brightness(90%);
 }
 
-.btn-primary {
+.btn-outline-primary {
+    color: white;
+    border-color: #6185ff;
     background-color: #6185ff;
     &:hover {
-        color: #fff;
-        background-color: #0b5ed7;
-        border-color: #0a58ca;
+        color: #6185ff;
+        background-color: white;
     }
 }
 
