@@ -5,7 +5,16 @@
 </ng-template>
 
 <div *ngIf="artists; else loading">
+
     <div class="m-5 d-flex justify-content-center flex-row flex-wrap">
+        <div class="card m-1" style="width: 18rem;" (click)="onClick()">
+            <img src="assets/add-artist-cross.png" class="card-img-top" alt="Card to add a new artist">
+            <div class="card-body">
+                <h5 class="card-title">New feature!</h5>
+                <p class="card-text">Your favorite artist is missing in the list? Click here to add it to our database by using the form.</p>
+                <a href="artist/add" class="btn btn-primary">Add an artist</a>
+            </div>
+        </div>
         <app-artist-card *ngFor="let artist of artists" 
                         [artist]="artist"></app-artist-card>
     </div>
