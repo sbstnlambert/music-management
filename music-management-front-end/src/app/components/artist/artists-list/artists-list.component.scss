@@ -1,0 +1,16 @@
+.card:hover {
+    filter: brightness(90%);
+}
+
+.btn-primary {
+    background-color: #6185ff;
+    &:hover {
+        color: #fff;
+        background-color: #0b5ed7;
+        border-color: #0a58ca;
+    }
+}
+
+.card-img-top {
+    height: 152px;
+}
