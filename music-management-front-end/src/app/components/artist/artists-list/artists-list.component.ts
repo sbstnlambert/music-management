@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Artist } from 'src/app/model/artist.model';
 import { ArtistService } from 'src/app/service/artist.service';
 import { SearchService } from 'src/app/service/search.service';
@@ -13,7 +14,8 @@ export class ArtistsListComponent implements OnInit {
 
   constructor(
     private artistService: ArtistService,
-    private searchService: SearchService
+    private searchService: SearchService,
+    private router: Router
   ) {
     this.searchService.searchSubject.subscribe({
       next: search => {
@@ -28,6 +30,10 @@ export class ArtistsListComponent implements OnInit {
 
   ngOnInit(): void {
     
+  }
+
+  public onClick(): void {
+    this.router.navigate(['artist', 'add']);
   }
 
 }
