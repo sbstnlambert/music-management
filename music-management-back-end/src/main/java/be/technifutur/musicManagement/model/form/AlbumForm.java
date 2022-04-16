@@ -10,4 +10,5 @@ public class AlbumForm {
     private LocalDate releaseDate;
     private String recordLabel;
     private String imageUrl;
+    private Long artistId;
 }
