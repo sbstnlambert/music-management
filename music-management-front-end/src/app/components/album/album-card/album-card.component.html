@@ -1,7 +1,7 @@
 <div class="card m-1" 
      style="width: 18rem;" 
      (click)="onClick()">
-    <img [src]="album.imageUrl" 
+    <img [src]="(album.imageUrl ? 'https://bit.ly/' + album.imageUrl : 'assets/logo/logo_small_icon_only.png')" 
             class="card-img-top" 
             alt="Image" 
             style="height: 286px;">

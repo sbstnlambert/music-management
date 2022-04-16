@@ -32,67 +32,67 @@ public class DatabaseFiller implements InitializingBean {
 
         Artist twentyOnePilots = Artist.builder()
                 .name("Twenty One Pilots")
-                .imageUrl("https://bit.ly/3Kv4h9I")
+                .imageUrl("3Kv4h9I")
                 .build();
         artistRepository.save(twentyOnePilots);
 
         Artist maskedWolf = Artist.builder()
                 .name("Masked Wolf")
-                .imageUrl("https://bit.ly/3Kyjsio")
+                .imageUrl("3Kyjsio")
                 .build();
         artistRepository.save(maskedWolf);
 
         Artist jacquesBrel = Artist.builder()
                 .name("Jacques Brel")
-                .imageUrl("https://bit.ly/37GLvhh")
+                .imageUrl("37GLvhh")
                 .build();
         artistRepository.save(jacquesBrel);
 
         Artist architects = Artist.builder()
                 .name("Architects")
-                .imageUrl("https://bit.ly/3KPEUzP")
+                .imageUrl("3KPEUzP")
                 .build();
         artistRepository.save(architects);
 
         Artist muse = Artist.builder()
                 .name("Muse")
-                .imageUrl("https://bit.ly/3JymP7G")
+                .imageUrl("3JymP7G")
                 .build();
         artistRepository.save(muse);
 
         Artist orelsan = Artist.builder()
                 .name("Orelsan")
-                .imageUrl("https://bit.ly/3KAkMBv")
+                .imageUrl("3KAkMBv")
                 .build();
         artistRepository.save(orelsan);
 
         Artist rammstein = Artist.builder()
                 .name("Rammstein")
-                .imageUrl("https://bit.ly/3E4Cevg")
+                .imageUrl("3E4Cevg")
                 .build();
         artistRepository.save(rammstein);
 
         Artist keryJames = Artist.builder()
                 .name("Kery James")
-                .imageUrl("https://bit.ly/3E5lofY")
+                .imageUrl("3E5lofY")
                 .build();
         artistRepository.save(keryJames);
 
         Artist token = Artist.builder()
                 .name("Token")
-                .imageUrl("https://bit.ly/3JygEAC")
+                .imageUrl("3JygEAC")
                 .build();
         artistRepository.save(token);
 
         Artist jeanFerrat = Artist.builder()
                 .name("Jean Ferrat")
-                .imageUrl("https://bit.ly/3JwWrer")
+                .imageUrl("3JwWrer")
                 .build();
         artistRepository.save(jeanFerrat);
 
         Artist imagineDragons = Artist.builder()
                 .name("Imagine Dragons")
-                .imageUrl("https://bit.ly/3KEi4uS")
+                .imageUrl("3KEi4uS")
                 .build();
         artistRepository.save(imagineDragons);
 
@@ -134,7 +134,7 @@ public class DatabaseFiller implements InitializingBean {
                 .name("Trench")
                 .releaseDate(LocalDate.of(2018, 10, 17))
                 .recordLabel("Fueled By Ramen")
-                .imageUrl("https://bit.ly/3jx0uwT")
+                .imageUrl("3jx0uwT")
                 .artist(twentyOnePilots)
                 .genres(Arrays.asList(rock, hipHop, rap))
                 .build();
@@ -144,7 +144,7 @@ public class DatabaseFiller implements InitializingBean {
                 .name("Blurry Face")
                 .releaseDate(LocalDate.of(2015, 10, 11))
                 .recordLabel("Fueled By Ramen")
-                .imageUrl("https://bit.ly/3KFCvre")
+                .imageUrl("3KFCvre")
                 .artist(twentyOnePilots)
                 .genres(Arrays.asList(pop, hipHop))
                 .build();
@@ -154,7 +154,7 @@ public class DatabaseFiller implements InitializingBean {
                 .name("Scaled And Icy")
                 .releaseDate(LocalDate.of(2021, 5, 10))
                 .recordLabel("Fueled By Ramen")
-                .imageUrl("https://bit.ly/3JxHA3j")
+                .imageUrl("3JxHA3j")
                 .artist(twentyOnePilots)
                 .genres(Arrays.asList(pop, hipHop))
                 .build();
@@ -164,7 +164,7 @@ public class DatabaseFiller implements InitializingBean {
                 .name("Astronomical")
                 .releaseDate(LocalDate.of(2021, 8, 10))
                 .recordLabel("New Space Rap")
-                .imageUrl("https://bit.ly/3JDb3sE")
+                .imageUrl("3JDb3sE")
                 .artist(maskedWolf)
                 .genres(List.of(rap, hipHop))
                 .build();
@@ -174,7 +174,7 @@ public class DatabaseFiller implements InitializingBean {
                 .name("Deutschland")
                 .releaseDate(LocalDate.of(2019, 4, 27))
                 .recordLabel("Rammstein record")
-                .imageUrl("https://bit.ly/3xrJ1Ot")
+                .imageUrl("3xrJ1Ot")
                 .artist(rammstein)
                 .genres(List.of(metal))
                 .build();
