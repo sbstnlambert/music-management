@@ -13,7 +13,6 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -216,7 +215,7 @@ public class DatabaseFiller implements InitializingBean {
         trackRepository.save(morph);
 
         Track myBlood = Track.builder()
-                .name("MyBlood")
+                .name("My Blood")
                 .lengthInSeconds(236)
                 .numberOfLikes(83328040L)
                 .albumPosition(4)
