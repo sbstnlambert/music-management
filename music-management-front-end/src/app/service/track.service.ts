@@ -23,4 +23,9 @@ export class TrackService {
   public getTrackById(id: number): Observable<TrackDetailed> {
     return this.http.get<TrackDetailed>(`${this.BASE_URL}/${id}`);
   }
+
+  public getTracksByNameWithAutocomplete(nameFragment: string): Observable<Array<TrackSimple>> {
+    return this.http.get<Array<TrackSimple>>(`${this.BASE_URL}/search?name=${nameFragment}`);
+  }
+
 }
