@@ -22,7 +22,7 @@ public class ArtistController {
         return ResponseEntity.ok(this.service.getArtistById(id));
     }
 
-    // GET - http://localhost:8080/artist/search?name=...
+    // GET - http://localhost:8080/artist/search?name
     @GetMapping("/search")
     public List<ArtistDTO> getArtistsByNameWithAutocomplete(@RequestParam(name = "name") String nameFragment) {
         return this.service.getArtistsByNameWithAutocomplete(nameFragment);

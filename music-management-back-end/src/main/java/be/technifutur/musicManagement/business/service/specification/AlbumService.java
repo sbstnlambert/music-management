@@ -8,6 +8,7 @@ public interface AlbumService {
 
     // READ
     AlbumDTO getAlbumById(Long id);
+    List<AlbumDTO> getAlbumsByNameWithAutocomplete(String nameFragment);
     List<AlbumDTO> getAlbumsByArtist(Long artistId);
 
 }
