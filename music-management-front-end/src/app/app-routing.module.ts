@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AlbumCardComponent } from './components/album/album-card/album-card.component';
 import { AlbumDetailedComponent } from './components/album/album-detailed/album-detailed.component';
 import { AlbumsListComponent } from './components/album/albums-list/albums-list.component';
 import { ArtistDetailComponent } from './components/artist/artist-detail/artist-detail.component';
@@ -8,6 +7,7 @@ import { ArtistsListComponent } from './components/artist/artists-list/artists-l
 import { ArtistFormComponent } from './components/artist/form/artist-form/artist-form.component';
 import { Error404Component } from './components/error404/error404.component';
 import { TrackDetailedComponent } from './components/track/track-detailed/track-detailed.component';
+import { TracksListComponent } from './components/track/tracks-list/tracks-list.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'artist', pathMatch: 'full'},
@@ -16,6 +16,7 @@ const routes: Routes = [
   { path: 'artist/:id', component: ArtistDetailComponent },
   { path: 'album', component: AlbumsListComponent },
   { path: 'album/:id', component: AlbumDetailedComponent },
+  { path: 'track', component: TracksListComponent },
   { path: 'track/:id', component: TrackDetailedComponent },
   { path: '404', component: Error404Component },
   { path: '**', redirectTo: '404'}
