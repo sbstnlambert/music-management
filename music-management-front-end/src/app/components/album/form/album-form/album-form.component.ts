@@ -22,11 +22,11 @@ export class AlbumFormComponent implements OnInit {
     let id: number = artistIdString ? parseInt(artistIdString) : -1;
     if (id && id > 0) {
       this.albumForm = new FormGroup({
-        artistId: new FormControl(id),
         name: new FormControl(null, Validators.required),
         releaseDate: new FormControl(null),
         recordLabel: new FormControl(null),
-        imageUrl: new FormControl(null)
+        imageUrl: new FormControl(null),
+        artistId: new FormControl(id)
       });
     } else {
       alert("Invalid ID");
@@ -37,22 +37,23 @@ export class AlbumFormComponent implements OnInit {
   }
 
   public onSubmit(): void {
-    // if (this.albumForm.valid) {
-    //   let form: AlbumForm = {
-    //     name: this.albumForm.value['name'],
-    //     releaseDate: this.albumForm.value['releaseDate'],
-    //     recordLabel: this.albumForm.value['recordLabel'],
-    //     imageUrl: this.albumForm.value['imageUrl']
-    //   };
-    //   this.service.insertAlbum(form).subscribe({
-    //     next: album => {
-    //       this.router.navigate(['album', album.id]);
-    //     },
-    //     error: () => console.log("An error has occured while communicating with the back-end service")
-    //   });
-    // } else {
-    //   alert("Invalid form");
-    // }
+    if (this.albumForm.valid) {
+      let form: AlbumForm = {
+        name: this.albumForm.value['name'],
+        releaseDate: this.albumForm.value['releaseDate'],
+        recordLabel: this.albumForm.value['recordLabel'],
+        imageUrl: this.albumForm.value['imageUrl'],
+        artistId: this.albumForm.value['artistId']
+      };
+      this.service.insertAlbum(form).subscribe({
+        next: album => {
+          this.router.navigate(['album', album.id]);
+        },
+        error: () => console.log("An error has occured while communicating with the back-end service")
+      });
+    } else {
+      alert("Invalid form");
+    }
     console.log(this.albumForm);
   }
 

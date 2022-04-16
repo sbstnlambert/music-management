@@ -11,4 +11,5 @@ export interface AlbumForm {
     releaseDate: Date;
     recordLabel: string;
     imageUrl: string;
+    artistId: number;
 }
