@@ -1,0 +1,63 @@
+<div class="container d-flex justify-content-center align-items-center pt-5 pb-5">
+    <h2>Insert a new album</h2>
+</div> 
+
+<form class="container-sm"
+        style="max-width: 550px;"
+        [formGroup]="albumForm"
+        (ngSubmit)="onSubmit()">
+
+    <div class="mb-3">
+        <label for="name" 
+                class="form-label">
+                Album name
+        </label>
+        <input type="text"
+                class="form-control"
+                id="name"
+                placeholder="My brand-new album name"
+                formControlName="name">
+    </div>
+
+    <div class="mb-3">
+        <label for="release-date" 
+                class="form-label">
+                Release date
+        </label>
+        <input type="date"
+                class="form-control"
+                id="release-date"
+                formControlName="releaseDate">
+    </div>
+
+    <div class="mb-3">
+        <label for="record-label" 
+                class="form-label">
+                Record label
+        </label>
+        <input type="text"
+                class="form-control"
+                id="record-label"
+                formControlName="recordLabel">
+    </div>
+
+    <label for="image-url"
+            class="form-label">
+            Album cover URL
+    </label>
+    <div class="input-group mb-3">
+        <span class="input-group-text"
+            id="basic-addon3">
+            https://bit.ly/ 
+        </span>
+        <input type="text"
+            class="form-control" 
+            id="image-url" 
+            aria-describedby="basic-addon3"
+            formControlName="imageUrl">
+    </div>
+
+    <button type="submit"
+            class="btn btn-outline-primary">Add a new album</button>
+
+</form>
