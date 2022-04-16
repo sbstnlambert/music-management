@@ -43,7 +43,7 @@ export class ArtistDetailComponent implements OnInit {
   }
 
   public onClick(): void {
-    this.router.navigate(['album', 'add']);
+    this.router.navigate(['artist', this.artist.id, 'album', 'add']);
   }
 
 }
