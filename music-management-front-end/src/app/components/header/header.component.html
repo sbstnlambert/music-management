@@ -18,8 +18,8 @@
                        (ngModelChange)="onChange($event)">
                 <select class="form-select me-2" style="width: 150px;">
                     <option value="" disabled selected>Filter by</option>
-                    <option value="artist">Artist</option>
-                    <option value="album">Album</option>
+                    <option routerLink="/artist" value="artist">Artist</option>
+                    <option routerLink="/album" value="album">Album</option>
                     <option value="track">Track</option>
                 </select>
             </div>
