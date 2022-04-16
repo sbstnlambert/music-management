@@ -1,0 +1,15 @@
+<ng-template #loading>
+    <div>
+        <p>Loading...</p>
+    </div>
+</ng-template>
+
+<div *ngIf="tracks; else loading">
+    <div class="container-sm d-flex justify-content-center flex-column">
+        <ul class="list-group">
+            <app-track-banner *ngFor="let track of tracks"
+                            [track]="track">
+            </app-track-banner>
+        </ul>
+    </div>
+</div>
