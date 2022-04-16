@@ -1,3 +1,7 @@
 .title img {
     width: 150px;
 }
+
+#logo > img, .nav-link {
+    cursor: pointer;
+}

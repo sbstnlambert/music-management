@@ -24,6 +24,14 @@ public class AlbumServiceImpl implements AlbumService {
                 .orElseThrow(() -> new ElementNotFoundException(id, AlbumDTO.class));
     }
 
+    @Override
+    public List<AlbumDTO> getAlbumsByNameWithAutocomplete(String nameFragment) {
+        return this.repository.findAlbumsByNameWithAutocomplete(nameFragment)
+                .stream()
+                .map(mapper::entityToDTO)
+                .toList();
+    }
+
     public List<AlbumDTO> getAlbumsByArtist(Long artistId) {
         return this.repository
                 .findAlbumsByArtist(artistId)
