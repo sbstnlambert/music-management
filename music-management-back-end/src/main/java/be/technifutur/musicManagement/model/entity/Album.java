@@ -27,13 +27,13 @@ public class Album {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "release_date", nullable = true)
+    @Column(name = "release_date")
     private LocalDate releaseDate;
 
-    @Column(name = "record_label", nullable = true)
+    @Column(name = "record_label")
     private String recordLabel;
 
-    @Column(name = "image_url", nullable = true)
+    @Column(name = "image_url")
     private String imageUrl;
 
     @ManyToOne

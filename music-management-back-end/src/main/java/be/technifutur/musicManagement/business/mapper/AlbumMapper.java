@@ -2,7 +2,6 @@ package be.technifutur.musicManagement.business.mapper;
 
 import be.technifutur.musicManagement.model.dto.AlbumDTO;
 import be.technifutur.musicManagement.model.entity.Album;
-import be.technifutur.musicManagement.model.entity.Artist;
 import be.technifutur.musicManagement.model.form.AlbumForm;
 import be.technifutur.musicManagement.repository.ArtistRepository;
 import org.springframework.stereotype.Service;
