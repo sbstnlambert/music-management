@@ -15,3 +15,11 @@ export interface TrackDetailed {
     albumGenres: Array<string>;
     videoUrl: string;
 }
+
+export interface TrackForm {
+    name: string;
+    lengthInSeconds: number;
+    albumPosition: number;
+    videoUrl: string;
+    albumId: number;
+}
