@@ -3,7 +3,9 @@ package be.technifutur.musicManagement.controller;
 import be.technifutur.musicManagement.business.service.specification.TrackService;
 import be.technifutur.musicManagement.model.dto.TrackDetailedDTO;
 import be.technifutur.musicManagement.model.dto.TrackSimpleDTO;
+import be.technifutur.musicManagement.model.form.TrackForm;
 import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -37,6 +39,12 @@ public class TrackController {
     @GetMapping("/artist/{artistId}")
     public List<TrackSimpleDTO> getTracksByArtist(@PathVariable Long artistId) {
         return this.service.getTracksByArtist(artistId);
+    }
+
+    // POST - http://localhost:8080/track/add
+    @PostMapping("/add")
+    public ResponseEntity<TrackSimpleDTO> insertTrack(@RequestBody TrackForm form) {
+        return ResponseEntity.ok(service.insertTrack(form));
     }
 
 }
