@@ -5,6 +5,8 @@ import be.technifutur.musicManagement.business.service.specification.TrackServic
 import be.technifutur.musicManagement.exception.ElementNotFoundException;
 import be.technifutur.musicManagement.model.dto.TrackDetailedDTO;
 import be.technifutur.musicManagement.model.dto.TrackSimpleDTO;
+import be.technifutur.musicManagement.model.entity.Track;
+import be.technifutur.musicManagement.model.form.TrackForm;
 import be.technifutur.musicManagement.repository.TrackRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -47,6 +49,13 @@ public class TrackServiceImpl implements TrackService {
                 .stream()
                 .map(mapper::entityToSimpleDTO)
                 .toList();
+    }
+
+    @Override
+    public TrackSimpleDTO insertTrack(TrackForm form) {
+        Track entity = mapper.formToEntity(form);
+        entity = repository.save(entity);
+        return mapper.entityToSimpleDTO(entity);
     }
 
 }
