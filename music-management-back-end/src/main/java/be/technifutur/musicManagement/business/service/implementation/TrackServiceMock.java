@@ -3,11 +3,17 @@ package be.technifutur.musicManagement.business.service.implementation;
 import be.technifutur.musicManagement.business.service.specification.TrackService;
 import be.technifutur.musicManagement.model.dto.TrackDetailedDTO;
 import be.technifutur.musicManagement.model.dto.TrackSimpleDTO;
+import be.technifutur.musicManagement.model.form.TrackForm;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class TrackServiceMock implements TrackService {
+
+    @Override
+    public TrackSimpleDTO insertTrack(TrackForm form) {
+        return null;
+    }
 
     @Override
     public TrackDetailedDTO getTrackById(Long id) {

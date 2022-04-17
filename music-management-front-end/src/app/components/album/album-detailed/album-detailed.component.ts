@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Album } from 'src/app/model/album.model';
 import { TrackSimple } from 'src/app/model/track.model';
 import { AlbumService } from 'src/app/service/album.service';
@@ -17,6 +17,7 @@ export class AlbumDetailedComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private albumService: AlbumService,
     private trackService: TrackService
   ) {
@@ -39,6 +40,10 @@ export class AlbumDetailedComponent implements OnInit {
    }
 
   ngOnInit(): void {
+  }
+
+  public onClick(): void {
+    this.router.navigate(['album', this.album.id,'track', 'add']);
   }
 
 }

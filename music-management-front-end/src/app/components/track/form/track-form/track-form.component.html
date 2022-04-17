@@ -1,0 +1,66 @@
+<div class="container d-flex justify-content-center align-items-center pt-5 pb-5">
+    <h2>Insert a new track</h2>
+</div> 
+
+<form class="container-sm pb-5"
+        style="max-width: 550px;"
+        [formGroup]="trackForm"
+        (ngSubmit)="onSubmit()">
+
+    <input type="hidden" formControlName="albumId">
+
+    <div class="mb-3">
+        <label for="name" 
+                class="form-label">
+                Track name
+        </label>
+        <input type="text"
+                class="form-control"
+                id="name"
+                placeholder="My new song name"
+                formControlName="name">
+    </div>
+
+    <div class="mb-3">
+        <label for="length" 
+                class="form-label">
+                Length (in seconds)
+        </label>
+        <input type="number"
+                class="form-control"
+                id="length"
+                placeholder="i.e. write 210 for a 3m30s song"
+                formControlName="lengthInSeconds">
+    </div>
+
+    <div class="mb-3">
+        <label for="album-position" 
+                class="form-label">
+                Track position in album
+        </label>
+        <input type="text"
+                class="form-control"
+                id="album-position"
+                formControlName="albumPosition">
+    </div>
+
+    <label for="video-url"
+            class="form-label">
+            Youtube video URL
+    </label>
+    <div class="input-group mb-3">
+        <span class="input-group-text"
+            id="basic-addon3">
+            https://youtu.be/ 
+        </span>
+        <input type="text"
+            class="form-control" 
+            id="video-url" 
+            aria-describedby="basic-addon3"
+            formControlName="videoUrl">
+    </div>
+
+    <button type="submit"
+            class="btn btn-outline-primary">Add a new track</button>
+
+</form>

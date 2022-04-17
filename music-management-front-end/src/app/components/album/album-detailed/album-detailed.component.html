@@ -10,6 +10,11 @@
     </div>    
     <div class="container-sm d-flex justify-content-center flex-column">
         <ul class="list-group">
+            <li class="track-banner list-group-item d-flex justify-content-center align-items-center"
+                (click)="onClick()">
+                <span class="me-3 mb-2 fs-1">+</span>
+                Add a new song
+            </li>
             <app-track-banner *ngFor="let track of tracks"
                             [track]="track">
             </app-track-banner>
