@@ -19,6 +19,7 @@ import { TrackBannerComponent } from './components/track/track-banner/track-bann
 import { TrackDetailedComponent } from './components/track/track-detailed/track-detailed.component';
 import { TracksListComponent } from './components/track/tracks-list/tracks-list.component';
 import { NumberSuffixPipe } from './pipe/number-suffix.pipe';
+import { TrackFormComponent } from './components/track/form/track-form/track-form.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { NumberSuffixPipe } from './pipe/number-suffix.pipe';
     ArtistFormComponent,
     AlbumsListComponent,
     TracksListComponent,
-    AlbumFormComponent
+    AlbumFormComponent,
+    TrackFormComponent
   ],
   imports: [
     BrowserModule,
