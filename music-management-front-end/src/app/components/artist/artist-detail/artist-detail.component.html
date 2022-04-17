@@ -14,7 +14,7 @@
             <div class="card-body">
                 <h5 class="card-title">New feature!</h5>
                 <p class="card-text">Humph! Did we forget an album?<br>Click here to add it to our database by using the provided form.</p>
-                <button routerLink="/album/add" class="btn btn-outline-primary">Add an album</button>
+                <button routerLink="/artist/{{ artist.id }}/album/add" class="btn btn-outline-primary">Add an album</button>
             </div>
         </div>
         <app-album-card *ngFor="let album of albums" 
