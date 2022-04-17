@@ -23,7 +23,8 @@ Genre
 Album
 	. GET    - /album/artist/:artistId   -->   + getAlbumsByArtist(artistId: Long): List<AlbumDTO>                          DONE
 	. GET    - /album/:id                -->   + getAlbumById(id: Long): AlbumDTO                                           DONE
-	. POST   - /album/add                -->   + insertAlbum(albumForm: AlbumForm): AlbumDTO
+	. GET    - /album/search?name        -->   + getAlbumsByNameWithAutocomplete(nameFragment: String): List<AlbumDTO>      DONE
+	. POST   - /album/add                -->   + insertAlbum(albumForm: AlbumForm): AlbumDTO                                DONE
 	. PUT    - /album/:id                -->   + updateAlbumById(id: Long, albumForm: AlbumForm): AlbumDTO
 	. DELETE - /album/:id                -->   + deleteAlbumById(id: Long): AlbumDTO
 	
@@ -32,6 +33,7 @@ Track
 	. GET    - /track/artist/:artistId   -->   + getTracksByArtist(artistId: Long): List<TrackDTO>                          DONE
 	. GET    - /track/album/:albumId     -->   + getTracksByAlbum(albumId: Long): List<TrackDTO>                            DONE
 	. GET    - /track/:id                -->   + getTrackById(id: Long): TrackDTO                                           DONE
-	. POST   - /track/add                -->   + insertTrack(trackForm: TrackForm): TrackDTO
+	. GET    - /track/search?name        -->   + getTracksByNameWithAutocomplete(nameFragment: String): List<TrackDTO>      DONE
+	. POST   - /track/add                -->   + insertTrack(trackForm: TrackForm): TrackDTO                                DONE
 	. PUT    - /track/:id                -->   + updateTrackById(id: Long, trackForm: TrackForm): TrackDTO
 	. DELETE - /track/:id                -->   + removeTrackById(id: Long): TrackDTO

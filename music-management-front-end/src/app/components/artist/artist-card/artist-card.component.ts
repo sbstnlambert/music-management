@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { Artist } from 'src/app/model/artist.model';
+import { SearchService } from 'src/app/service/search.service';
 
 @Component({
   selector: 'app-artist-card',
@@ -11,12 +12,16 @@ export class ArtistCardComponent implements OnInit {
   @Input()
   artist!: Artist;
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private searchService: SearchService
+  ) { }
 
   ngOnInit(): void {
   }
 
   onClick(): void {
+    this.searchService.resetSearch();
     this.router.navigate(['artist', this.artist.id]);
   }
 
