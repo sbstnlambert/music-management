@@ -15,7 +15,12 @@ export class HeaderComponent implements OnInit {
   constructor(
     private searchService: SearchService,
     private router: Router
-  ) { }
+  ) {
+    this.searchService.resetSubject.subscribe({
+      next: any => this.onReset(),
+      error: () => console.log("Subscription to SearchService failed")
+    });
+  }
 
   ngOnInit(): void {
   }
@@ -26,9 +31,13 @@ export class HeaderComponent implements OnInit {
   }
 
   onClick(event: any): void {
-    this.onChange('');
-    this.filter = '';
+    this.onReset();
     this.router.navigate([event.target.id]);
+  }
+
+  onReset(): void {
+    this.filter = '';
+    this.onChange('');
   }
 
 }

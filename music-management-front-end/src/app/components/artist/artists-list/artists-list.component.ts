@@ -33,6 +33,7 @@ export class ArtistsListComponent implements OnInit {
   }
 
   public onClick(): void {
+    this.searchService.resetSearch();
     this.router.navigate(['artist', 'add']);
   }
 

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +8,7 @@ export class SearchService {
 
   private _inputSearch!: string;
   searchSubject: BehaviorSubject<string> = new BehaviorSubject<string>("");
+  resetSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
   constructor() { }
 
@@ -19,4 +20,9 @@ export class SearchService {
   private emitSubject(): void {
     this.searchSubject.next(this._inputSearch);
   }
+
+  public resetSearch(): void {
+    this.resetSubject.next(null);
+  }
+
 }

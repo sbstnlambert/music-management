@@ -4,6 +4,7 @@ import { Album } from 'src/app/model/album.model';
 import { Artist } from 'src/app/model/artist.model';
 import { AlbumService } from 'src/app/service/album.service';
 import { ArtistService } from 'src/app/service/artist.service';
+import { SearchService } from 'src/app/service/search.service';
 
 @Component({
   selector: 'app-artist-detail',
@@ -19,9 +20,10 @@ export class ArtistDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router, 
     private albumService: AlbumService,
-    private artistService: ArtistService
+    private artistService: ArtistService,
+    private searchService: SearchService
   ) {
-    let artistIdString: string | null = route.snapshot.paramMap.get('id');
+    let artistIdString: string | null = this.route.snapshot.paramMap.get('id');
     let artistId: number = artistIdString ? parseInt(artistIdString) : -1;
 
     if (artistId && artistId > 0) {
@@ -43,6 +45,7 @@ export class ArtistDetailComponent implements OnInit {
   }
 
   public onClick(): void {
+    this.searchService.resetSearch();
     this.router.navigate(['artist', this.artist.id, 'album', 'add']);
   }
 
