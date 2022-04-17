@@ -1,0 +1,17 @@
+.card:hover {
+    filter: brightness(90%);
+}
+
+.btn-outline-primary {
+    color: white;
+    border-color: #6183ff;
+    background-color: #6183ff;
+    &:hover {
+        color: #6183ff;
+        background-color: white;
+    }
+}
+
+.card-img-top {
+    height: 152px;
+}

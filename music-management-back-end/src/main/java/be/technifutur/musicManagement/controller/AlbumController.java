@@ -2,7 +2,9 @@ package be.technifutur.musicManagement.controller;
 
 import be.technifutur.musicManagement.business.service.specification.AlbumService;
 import be.technifutur.musicManagement.model.dto.AlbumDTO;
+import be.technifutur.musicManagement.model.form.AlbumForm;
 import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -32,4 +34,9 @@ public class AlbumController {
         return this.service.getAlbumsByArtist(artistId);
     }
 
+    // POST - http://localhost:8080/album/add
+    @PostMapping("/add")
+    public ResponseEntity<AlbumDTO> insertAlbum(@RequestBody AlbumForm form) {
+        return ResponseEntity.ok(service.insertAlbum(form));
+    }
 }
