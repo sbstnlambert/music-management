@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AlbumForm } from 'src/app/model/album.model';
 import { AlbumService } from 'src/app/service/album.service';
 
 @Component({
@@ -38,14 +37,7 @@ export class AlbumFormComponent implements OnInit {
 
   public onSubmit(): void {
     if (this.albumForm.valid) {
-      let form: AlbumForm = {
-        name: this.albumForm.value['name'],
-        releaseDate: this.albumForm.value['releaseDate'],
-        recordLabel: this.albumForm.value['recordLabel'],
-        imageUrl: this.albumForm.value['imageUrl'],
-        artistId: this.albumForm.value['artistId']
-      };
-      this.service.insertAlbum(form).subscribe({
+      this.service.insertAlbum(this.albumForm.value).subscribe({
         next: album => {
           this.router.navigate(['album', album.id]);
         },

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ArtistForm } from 'src/app/model/artist.model';
 import { ArtistService } from 'src/app/service/artist.service';
 
 @Component({
@@ -26,11 +25,7 @@ export class ArtistFormComponent implements OnInit {
 
   public onSubmit(): void {
     if (this.artistForm.valid) {
-      let form: ArtistForm = {
-        name: this.artistForm.value['name'],
-        imageUrl: this.artistForm.value['imageUrl']
-      };
-      this.service.insertArtist(form).subscribe({
+      this.service.insertArtist(this.artistForm.value).subscribe({
         next: artist => {
           this.router.navigate(['artist', artist.id]);
         },
