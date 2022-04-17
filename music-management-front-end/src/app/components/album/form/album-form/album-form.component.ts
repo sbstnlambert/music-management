@@ -54,7 +54,6 @@ export class AlbumFormComponent implements OnInit {
     } else {
       alert("Invalid form");
     }
-    console.log(this.albumForm);
   }
 
 }
