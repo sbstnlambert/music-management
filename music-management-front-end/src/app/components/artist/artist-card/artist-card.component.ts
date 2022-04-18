@@ -35,8 +35,8 @@ export class ArtistCardComponent implements OnInit {
 
   onDelete(): void {
     this.artistService.deleteArtistById(this.artist.id).subscribe({
-      next: deletedArtist => console.log("The artist id " + deletedArtist.id + " has been deleted from the database"),
-      error: () => console.log("An error has occured during the communication with the back-end service")
+      next: deletedArtist => console.log(`Artist with id = ${deletedArtist.id} has been successfully deleted`),
+      error: () => console.log('An error has occured during the communication with the back-end service')
     });
   }
 

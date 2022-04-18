@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { Artist, ArtistForm } from '../model/artist.model';
 
 @Injectable({
@@ -9,6 +9,7 @@ import { Artist, ArtistForm } from '../model/artist.model';
 export class ArtistService {
 
   private BASE_URL: string = 'http://localhost:8080/artist';
+  public refreshSubject: BehaviorSubject<any> = new BehaviorSubject<any>('');
 
   constructor(private http: HttpClient) { }
 
@@ -29,6 +30,9 @@ export class ArtistService {
   }
 
   public deleteArtistById(id: number): Observable<Artist> {
-    return this.http.delete<Artist>(`${this.BASE_URL}/${id}`);
+    return this.http.delete<Artist>(`${this.BASE_URL}/${id}`).pipe(
+      tap(() => this.refreshSubject.next(''))
+    );
   }
+
 }
