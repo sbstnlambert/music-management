@@ -49,4 +49,12 @@ public class AlbumServiceImpl implements AlbumService {
         return mapper.entityToDTO(entity);
     }
 
+    @Override
+    public AlbumDTO deleteAlbumById(Long id) {
+        Album toDelete = this.repository.findById(id)
+                .orElseThrow(() -> new ElementNotFoundException(id, Album.class));
+        this.repository.deleteById(id);
+        return mapper.entityToDTO(toDelete);
+    }
+
 }

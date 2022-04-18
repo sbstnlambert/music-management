@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { Album, AlbumForm } from '../model/album.model';
 
 @Injectable({
@@ -9,6 +9,7 @@ import { Album, AlbumForm } from '../model/album.model';
 export class AlbumService {
 
   private BASE_URL: string = 'http://localhost:8080/album';
+  public refreshSubject: BehaviorSubject<any> = new BehaviorSubject<any>('');
 
   constructor(private http: HttpClient) { }
 
@@ -26,6 +27,12 @@ export class AlbumService {
 
   public getAlbumsByNameWithAutocomplete(nameFragment: string): Observable<Array<Album>> {
     return this.http.get<Array<Album>>(`${this.BASE_URL}/search?name=${nameFragment}`);
+  }
+
+  public deleteAlbumById(id: number): Observable<Album> {
+    return this.http.delete<Album>(`${this.BASE_URL}/${id}`).pipe(
+      tap(() => this.refreshSubject.next(''))
+    );
   }
 
 }
