@@ -17,4 +17,6 @@ public interface TrackService {
     List<TrackSimpleDTO> getTracksByAlbum(Long albumId);
     List<TrackSimpleDTO> getTracksByArtist(Long artistId);
 
+    // DELETE
+    TrackSimpleDTO deleteTrackById(Long id);
 }
