@@ -15,4 +15,6 @@ public interface AlbumService {
     List<AlbumDTO> getAlbumsByNameWithAutocomplete(String nameFragment);
     List<AlbumDTO> getAlbumsByArtist(Long artistId);
 
+    // DELETE
+    AlbumDTO deleteAlbumById(Long id);
 }
