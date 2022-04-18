@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Album } from 'src/app/model/album.model';
+import { AlbumService } from 'src/app/service/album.service';
 import { SearchService } from 'src/app/service/search.service';
 
 @Component({
@@ -15,6 +16,7 @@ export class AlbumCardComponent implements OnInit {
   isHovered: boolean = false;
 
   constructor(
+    private service: AlbumService,
     private router: Router,
     private searchService: SearchService
   ) { }
@@ -29,6 +31,10 @@ export class AlbumCardComponent implements OnInit {
 
   onHover(): void {
     this.isHovered = !this.isHovered;
+  }
+
+  onDelete(): void {
+    this.service.deleteAlbumById(this.album.id).subscribe();
   }
 
 }
