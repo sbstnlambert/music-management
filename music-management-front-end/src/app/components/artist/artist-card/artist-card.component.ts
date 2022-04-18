@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { Artist } from 'src/app/model/artist.model';
+import { ArtistService } from 'src/app/service/artist.service';
 import { SearchService } from 'src/app/service/search.service';
 
 @Component({
@@ -16,7 +17,8 @@ export class ArtistCardComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private searchService: SearchService
+    private searchService: SearchService,
+    private artistService: ArtistService
   ) { }
 
   ngOnInit(): void {
@@ -29,6 +31,13 @@ export class ArtistCardComponent implements OnInit {
 
   onHover(): void {
     this.isHovered = !this.isHovered;
+  }
+
+  onDelete(): void {
+    this.artistService.deleteArtistById(this.artist.id).subscribe({
+      next: deletedArtist => console.log("The artist id " + deletedArtist.id + " has been deleted from the database"),
+      error: () => console.log("An error has occured during the communication with the back-end service")
+    });
   }
 
 }

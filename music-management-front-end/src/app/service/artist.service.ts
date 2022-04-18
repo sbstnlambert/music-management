@@ -27,4 +27,8 @@ export class ArtistService {
   public getArtistsByNameWithAutocomplete(nameFragment: string): Observable<Array<Artist>> {
     return this.http.get<Array<Artist>>(`${this.BASE_URL}/search?name=${nameFragment}`);
   }
+
+  public deleteArtistById(id: number): Observable<Artist> {
+    return this.http.delete<Artist>(`${this.BASE_URL}/${id}`);
+  }
 }
