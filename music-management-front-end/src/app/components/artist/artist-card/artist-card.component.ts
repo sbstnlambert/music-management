@@ -12,6 +12,8 @@ export class ArtistCardComponent implements OnInit {
   @Input()
   artist!: Artist;
 
+  isHovered: boolean = false;
+
   constructor(
     private router: Router,
     private searchService: SearchService
@@ -23,6 +25,10 @@ export class ArtistCardComponent implements OnInit {
   onClick(): void {
     this.searchService.resetSearch();
     this.router.navigate(['artist', this.artist.id]);
+  }
+
+  onHover(): void {
+    this.isHovered = !this.isHovered;
   }
 
 }

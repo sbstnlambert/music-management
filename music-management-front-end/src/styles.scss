@@ -18,12 +18,30 @@ li {
     list-style-type: none;
 }
 
-.card:hover {
-    filter: brightness(70%);
+.card-data button {
+    filter: brightness(130%);
+}
+
+.card-img-data:hover {
+    filter: brightness(80%);
     cursor: pointer;
+}
+
+.card-data:hover {
+    filter: brightness(90%);
 }
 
 .track-banner:hover {
     filter: brightness(90%);
     cursor: pointer;
+}
+
+.btn-outline-danger.btn-reversed {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: white;
+    &:hover {
+        background-color: white;
+        color: #dc3545;
+    }
 }

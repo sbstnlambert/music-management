@@ -12,6 +12,8 @@ export class AlbumCardComponent implements OnInit {
   @Input()
   album!: Album;
 
+  isHovered: boolean = false;
+
   constructor(
     private router: Router,
     private searchService: SearchService
@@ -23,6 +25,10 @@ export class AlbumCardComponent implements OnInit {
   public onClick(): void {
     this.searchService.resetSearch();
     this.router.navigate(['album', this.album.id]);
+  }
+
+  onHover(): void {
+    this.isHovered = !this.isHovered;
   }
 
 }
