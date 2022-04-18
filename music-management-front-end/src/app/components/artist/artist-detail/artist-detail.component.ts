@@ -36,6 +36,16 @@ export class ArtistDetailComponent implements OnInit {
         next: albums => this.albums = albums,
         error: () => console.log("An error has occured while communicating with the back-end service")
       });
+
+      this.albumService.refreshSubject.subscribe({
+        next: () => {
+          this.albumService.getAlbumsByArtist(artistId).subscribe({
+            next: albums => this.albums = albums,
+            error: () => console.log("An error has occured while communicating with the back-end service")
+          });
+        },
+        error: () => console.log('Subscription to refreshSubject of AlbumService failed')
+      });
     } else {
       alert('Invalid ID');
     }

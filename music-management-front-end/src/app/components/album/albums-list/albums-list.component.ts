@@ -25,6 +25,16 @@ export class AlbumsListComponent implements OnInit {
       },
       error: () => console.log("Subscription to SearchService failed")
     });
+
+    this.albumService.refreshSubject.subscribe({
+      next: () => {
+        this.albumService.getAlbumsByNameWithAutocomplete('').subscribe({
+          next: albums => this.albums = albums,
+          error: () => console.log("An error has occured while communicating with the back-end service")
+        });
+      },
+      error: () => console.log('Subscription to refreshSubject of AlbumService failed')
+    });
   }
 
   ngOnInit(): void {

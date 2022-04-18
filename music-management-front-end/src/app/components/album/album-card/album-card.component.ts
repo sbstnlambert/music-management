@@ -34,7 +34,10 @@ export class AlbumCardComponent implements OnInit {
   }
 
   onDelete(): void {
-    this.service.deleteAlbumById(this.album.id).subscribe();
+    this.service.deleteAlbumById(this.album.id).subscribe({
+      next: deletedAlbum => console.log(`Album with id = ${deletedAlbum.id} has been successfully deleted`),
+      error: () => console.log('An error has occured during the communication with the back-end service')
+    });
   }
 
 }
