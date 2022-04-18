@@ -1,7 +1,13 @@
 .list-group-item {
     margin: 5px 0;
+    padding: 0;
 }
 
 .bg-custom {
     background-color: #6183ff;
+}
+
+button {
+    border-right: 1px solid grey;
+    border-radius: 0;
 }
