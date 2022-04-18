@@ -15,4 +15,6 @@ public interface ArtistService {
     List<ArtistDTO> getArtistsByNameWithAutocomplete(String nameFragment);
     List<ArtistDTO> getAllArtists();
 
+    // DELETE
+    ArtistDTO deleteArtistById(Long id);
 }

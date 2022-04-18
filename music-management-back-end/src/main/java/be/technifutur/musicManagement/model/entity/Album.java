@@ -39,7 +39,11 @@ public class Album {
     @ManyToOne
     private Artist artist;
 
-    @OneToMany(mappedBy = "album")
+    @OneToMany(
+            mappedBy = "album",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
     private List<Track> tracks = new ArrayList<>();
 
     @ManyToMany
