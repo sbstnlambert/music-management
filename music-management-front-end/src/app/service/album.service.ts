@@ -16,6 +16,10 @@ export class AlbumService {
     return this.http.post<Album>(`${this.BASE_URL}/add`, toInsert);
   }
 
+  public deleteAlbumById(id: number): Observable<Album> {
+    return this.http.delete<Album>(`${this.BASE_URL}/${id}`)
+  }
+
   public getAlbumsByArtist(artistId: number): Observable<Array<Album>> {
     return this.http.get<Array<Album>>(`${this.BASE_URL}/artist/${artistId}`);
   }
