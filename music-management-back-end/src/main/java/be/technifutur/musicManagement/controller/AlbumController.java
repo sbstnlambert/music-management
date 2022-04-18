@@ -39,4 +39,10 @@ public class AlbumController {
     public ResponseEntity<AlbumDTO> insertAlbum(@RequestBody AlbumForm form) {
         return ResponseEntity.ok(service.insertAlbum(form));
     }
+
+    // DELETE - http://localhost:8080/album/:id
+    @DeleteMapping("/{id}")
+    public ResponseEntity<AlbumDTO> deleteAlbumById(@PathVariable Long id) {
+        return ResponseEntity.ok(service.deleteAlbumById(id));
+    }
 }
