@@ -49,4 +49,11 @@ public class AlbumServiceImpl implements AlbumService {
         return mapper.entityToDTO(entity);
     }
 
+    @Override
+    public AlbumDTO deleteAlbumById(Long id) {
+        AlbumDTO toDelete = getAlbumById(id);
+        repository.deleteById(id);
+        return toDelete;
+    }
+
 }
