@@ -27,8 +27,8 @@ public class DatabaseFiller implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        /* ARTIST CREATION */
 
+        // region ARTIST
         Artist twentyOnePilots = Artist.builder()
                 .name("Twenty One Pilots")
                 .imageUrl("3Kv4h9I")
@@ -94,9 +94,9 @@ public class DatabaseFiller implements InitializingBean {
                 .imageUrl("3KEi4uS")
                 .build();
         artistRepository.save(imagineDragons);
+        //endregion
 
-        /* GENRE CREATION */
-
+        // region GENRE
         Genre hipHop = Genre.builder()
                 .name("Hip-Hop")
                 .build();
@@ -126,9 +126,9 @@ public class DatabaseFiller implements InitializingBean {
                 .name("French")
                 .build();
         genreRepository.save(french);
+        //endregion
 
-        /* ALBUM CREATION */
-
+        // region ALBUM
         Album trench = Album.builder()
                 .name("Trench")
                 .releaseDate(LocalDate.of(2018, 10, 17))
@@ -178,9 +178,9 @@ public class DatabaseFiller implements InitializingBean {
                 .genres(List.of(metal))
                 .build();
         albumRepository.save(deutschland);
+        //endregion
 
-        /* TRACK CREATION */
-
+        // region TRACK
         Track jumpsuit = Track.builder()
                 .name("Jumpsuit")
                 .lengthInSeconds(299)
@@ -257,6 +257,8 @@ public class DatabaseFiller implements InitializingBean {
                 .videoUrl("https://www.youtube.com/watch?v=Z4ZrzuZLuC4")
                 .build();
         trackRepository.save(deutschlandTrack);
+        //endregion
+
     }
 
 }
