@@ -43,6 +43,14 @@ public class ArtistServiceImpl implements ArtistService {
     }
 
     @Override
+    public ArtistDTO deleteArtistById(Long id) {
+        Artist deleted = this.repository.findById(id)
+                .orElseThrow(() -> new ElementNotFoundException(id, Artist.class));
+        this.repository.deleteById(id);
+        return mapper.entityToDTO(deleted);
+    }
+
+    @Override
     public ArtistDTO insertArtist(ArtistForm form) {
         Artist entity = mapper.formToEntity(form);
         entity = repository.save(entity);

@@ -16,7 +16,7 @@ public class ArtistController {
 
     private final ArtistService service;
 
-    // GET - http://localhost:8080/artist/id
+    // GET - http://localhost:8080/artist/:id
     @GetMapping("/{id}")
     public ResponseEntity<ArtistDTO> getArtistById(@PathVariable Long id) {
         return ResponseEntity.ok(this.service.getArtistById(id));
@@ -38,5 +38,11 @@ public class ArtistController {
     @PostMapping("/add")
     public ResponseEntity<ArtistDTO> insertArtist(@RequestBody ArtistForm form) {
         return ResponseEntity.ok(service.insertArtist(form));
+    }
+
+    // DELETE - http://localhost:8080/artist/:id
+    @DeleteMapping("/{id}")
+    public ArtistDTO deleteArtistById(@PathVariable Long id) {
+        return this.service.deleteArtistById(id);
     }
 }

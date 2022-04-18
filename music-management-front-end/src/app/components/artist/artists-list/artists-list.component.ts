@@ -26,11 +26,19 @@ export class ArtistsListComponent implements OnInit {
       },
       error: () => console.log("Subscription to SearchService failed")
     });
+
+    this.artistService.refreshSubject.subscribe({
+      next: () => {
+        this.artistService.getAllArtists().subscribe({
+          next: artists => this.artists = artists,
+          error: () => console.log("An error has occured during the communication with the back-end service")
+        });
+      },
+      error: () => console.log("Subscription to deleteSubject in ArtistService failed")
+    });
   }
 
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void { }
 
   public onClick(): void {
     this.searchService.resetSearch();
