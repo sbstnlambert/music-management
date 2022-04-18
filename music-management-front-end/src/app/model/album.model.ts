@@ -4,7 +4,6 @@ export interface Album {
     releaseDate: Date;
     recordLabel: string;
     imageUrl: string;
-    artistId: number;
 }
 
 export interface AlbumForm {
