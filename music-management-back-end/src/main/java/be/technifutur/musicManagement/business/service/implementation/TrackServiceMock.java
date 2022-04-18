@@ -44,6 +44,16 @@ public class TrackServiceMock implements TrackService {
         return getTrackSimpleDTOList();
     }
 
+    @Override
+    public TrackSimpleDTO deleteTrackById(Long id) {
+        return TrackSimpleDTO.builder()
+                .id(1L)
+                .name("Jumpsuit")
+                .albumPosition(1)
+                .numberOfLikes(116452548L)
+                .build();
+    }
+
     private List<TrackSimpleDTO> getTrackSimpleDTOList()  {
         List<TrackSimpleDTO> mockList = new ArrayList<>();
         mockList.add(

@@ -47,4 +47,10 @@ public class TrackController {
         return ResponseEntity.ok(service.insertTrack(form));
     }
 
+    // DELETE - http://localhost:8080/track/:id
+    @DeleteMapping("/{id}")
+    public TrackSimpleDTO deleteTrackById(@PathVariable Long id) {
+        return this.service.deleteTrackById(id);
+    }
+
 }

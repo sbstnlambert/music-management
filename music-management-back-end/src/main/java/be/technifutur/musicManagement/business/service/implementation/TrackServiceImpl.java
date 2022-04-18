@@ -58,4 +58,12 @@ public class TrackServiceImpl implements TrackService {
         return mapper.entityToSimpleDTO(entity);
     }
 
+    @Override
+    public TrackSimpleDTO deleteTrackById(Long id) {
+        Track deleted = this.repository.findById(id)
+                .orElseThrow(() -> new ElementNotFoundException(id, Track.class));
+        this.repository.deleteById(id);
+        return this.mapper.entityToSimpleDTO(deleted);
+    }
+
 }
