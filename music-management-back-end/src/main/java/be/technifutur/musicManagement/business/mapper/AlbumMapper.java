@@ -25,7 +25,6 @@ public class AlbumMapper {
                 .releaseDate(entity.getReleaseDate())
                 .recordLabel(entity.getRecordLabel())
                 .imageUrl(entity.getImageUrl())
-                .artistId(entity.getArtist().getId())
                 .build();
     }
 

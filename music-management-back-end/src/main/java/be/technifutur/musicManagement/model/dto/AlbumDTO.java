@@ -14,6 +14,5 @@ public class AlbumDTO {
     private LocalDate releaseDate;
     private String recordLabel;
     private String imageUrl;
-    private Long artistId;
 
 }
