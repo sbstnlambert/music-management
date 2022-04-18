@@ -20,6 +20,7 @@ import { TrackDetailedComponent } from './components/track/track-detailed/track-
 import { TracksListComponent } from './components/track/tracks-list/tracks-list.component';
 import { NumberSuffixPipe } from './pipe/number-suffix.pipe';
 import { TrackFormComponent } from './components/track/form/track-form/track-form.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { TrackFormComponent } from './components/track/form/track-form/track-for
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

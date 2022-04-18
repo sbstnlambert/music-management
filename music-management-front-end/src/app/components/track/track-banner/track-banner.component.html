@@ -1,6 +1,14 @@
 <li class="track-banner list-group-item d-flex justify-content-between align-items-center"
+    (mouseenter)="onHover()"
+    (mouseleave)="onHover()"
     (click)="onClick()">
-    {{ track.albumPosition }}
+    <button class="btn"
+            (mouseenter)="onHoverDeleteButton()"
+            (mouseleave)="onHoverDeleteButton()"
+            *ngIf="isHovered">
+        <fa-icon [icon]="faTrashCan" [styles]="{'color': iconColor}" size="lg"></fa-icon>
+    </button>
+    {{ track.albumPosition }} - 
     {{ track.name }}
     <span class="badge bg-custom rounded-pill"> {{ track.numberOfLikes | numberSuffix }} </span>
 </li>
