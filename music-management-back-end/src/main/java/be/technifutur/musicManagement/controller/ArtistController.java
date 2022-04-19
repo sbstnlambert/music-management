@@ -5,6 +5,7 @@ import be.technifutur.musicManagement.model.dto.ArtistDTO;
 import be.technifutur.musicManagement.model.form.ArtistForm;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -37,12 +38,14 @@ public class ArtistController {
 
     // POST - http://localhost:8080/artist/add
     @PostMapping("/add")
+    @Secured({"ROLE_ADMIN"})
     public ResponseEntity<ArtistDTO> insertArtist(@Valid @RequestBody ArtistForm form) {
-        return ResponseEntity.ok(service.insertArtist(form));
+        return ResponseEntity.ok(this.service.insertArtist(form));
     }
 
     // DELETE - http://localhost:8080/artist/:id
     @DeleteMapping("/{id}")
+    @Secured({"ROLE_ADMIN"})
     public ArtistDTO deleteArtistById(@PathVariable Long id) {
         return this.service.deleteArtistById(id);
     }

@@ -6,6 +6,7 @@ import be.technifutur.musicManagement.model.dto.TrackSimpleDTO;
 import be.technifutur.musicManagement.model.form.TrackForm;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -44,12 +45,14 @@ public class TrackController {
 
     // POST - http://localhost:8080/track/add
     @PostMapping("/add")
+    @Secured({"ROLE_ADMIN"})
     public ResponseEntity<TrackSimpleDTO> insertTrack(@Valid @RequestBody TrackForm form) {
-        return ResponseEntity.ok(service.insertTrack(form));
+        return ResponseEntity.ok(this.service.insertTrack(form));
     }
 
     // DELETE - http://localhost:8080/track/:id
     @DeleteMapping("/{id}")
+    @Secured({"ROLE_ADMIN"})
     public TrackSimpleDTO deleteTrackById(@PathVariable Long id) {
         return this.service.deleteTrackById(id);
     }
