@@ -1,15 +1,10 @@
 package be.technifutur.musicManagement.utils;
 
-import be.technifutur.musicManagement.model.entity.Album;
-import be.technifutur.musicManagement.model.entity.Artist;
-import be.technifutur.musicManagement.model.entity.Genre;
-import be.technifutur.musicManagement.model.entity.Track;
-import be.technifutur.musicManagement.repository.AlbumRepository;
-import be.technifutur.musicManagement.repository.ArtistRepository;
-import be.technifutur.musicManagement.repository.GenreRepository;
-import be.technifutur.musicManagement.repository.TrackRepository;
+import be.technifutur.musicManagement.model.entity.*;
+import be.technifutur.musicManagement.repository.*;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -24,6 +19,8 @@ public class DatabaseFiller implements InitializingBean {
     private final AlbumRepository albumRepository;
     private final TrackRepository trackRepository;
     private final GenreRepository genreRepository;
+    private final UserRepository userRepository;
+    private final PasswordEncoder encoder;
 
     @Override
     public void afterPropertiesSet() throws Exception {
@@ -258,6 +255,26 @@ public class DatabaseFiller implements InitializingBean {
                 .build();
         trackRepository.save(deutschlandTrack);
         //endregion
+
+        // region USER
+        User user = new User();
+        user.setUsername("lionel");
+        user.setPassword(this.encoder.encode("lionel"));
+        user.setEmail("lionel.test@security.com");
+        userRepository.save(user);
+
+        user = new User();
+        user.setUsername("sebastien");
+        user.setPassword(this.encoder.encode("sebastien"));
+        user.setEmail("sebastien.test@security.com");
+        userRepository.save(user);
+
+        user = new User();
+        user.setUsername("admin");
+        user.setPassword(this.encoder.encode("admin"));
+        user.setEmail("admin.test@security.com");
+        userRepository.save(user);
+        // endregion
 
     }
 
