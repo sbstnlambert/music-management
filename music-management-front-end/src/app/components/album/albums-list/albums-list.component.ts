@@ -12,7 +12,7 @@ import { SearchService } from 'src/app/service/search.service';
 export class AlbumsListComponent implements OnInit, OnDestroy {
 
   albums!: Array<Album>;
-  searchSubscription!: Subscription;
+  private searchSubscription!: Subscription;
 
   constructor(
     private albumService: AlbumService,
