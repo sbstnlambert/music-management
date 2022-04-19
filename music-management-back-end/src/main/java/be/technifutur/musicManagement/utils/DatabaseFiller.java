@@ -261,18 +261,21 @@ public class DatabaseFiller implements InitializingBean {
         user.setUsername("lionel");
         user.setPassword(this.encoder.encode("lionel"));
         user.setEmail("lionel.test@security.com");
+        user.setRoles(List.of("ROLE_USER"));
         userRepository.save(user);
 
         user = new User();
         user.setUsername("sebastien");
         user.setPassword(this.encoder.encode("sebastien"));
         user.setEmail("sebastien.test@security.com");
+        user.setRoles(List.of("ROLE_USER"));
         userRepository.save(user);
 
         user = new User();
         user.setUsername("admin");
         user.setPassword(this.encoder.encode("admin"));
         user.setEmail("admin.test@security.com");
+        user.setRoles(Arrays.asList("ROLE_USER", "ROLE_ADMIN"));
         userRepository.save(user);
         // endregion
 

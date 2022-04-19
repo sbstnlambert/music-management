@@ -7,6 +7,10 @@ import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class UserMapper {
@@ -31,6 +35,7 @@ public class UserMapper {
                 .password(this.encoder.encode(form.getPassword()))
                 .email(form.getEmail())
                 .isNotLocked(true)
+                .roles(List.of("ROLE_USER"))
                 .build();
     }
 
