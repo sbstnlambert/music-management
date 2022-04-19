@@ -24,7 +24,6 @@ export class ArtistsListComponent implements OnInit, OnDestroy {
         this.artistService.getAllArtists().subscribe({
           next: artists => {
             this.artists = artists;
-            console.log(1);
           },
           error: () => console.log("An error has occured during the communication with the back-end service")
         });
@@ -41,7 +40,6 @@ export class ArtistsListComponent implements OnInit, OnDestroy {
         this.artistService.getArtistsByNameWithAutocomplete(search).subscribe({
           next: artists => {
             this.artists = artists;
-            console.log(2);
           },
           error: () => console.log("An error has occured during the communication with the back-end service")
         });
