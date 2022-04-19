@@ -19,6 +19,17 @@
                 formControlName="name">
     </div>
 
+    <!-- name validation -->
+    <div *ngIf="artistForm.controls['name'].invalid && (artistForm.controls['name'].dirty || artistForm.controls['name'].touched)"
+    class="alert alert-danger p-1 fs-s">
+        <div *ngIf="artistForm.controls['name'].errors?.['required']">
+            Name is required.
+        </div>
+        <div *ngIf="artistForm.controls['name'].errors?.['maxlength']">
+            Name must be 255 characters long at maximum.
+        </div>
+    </div>
+
     <label for="image-url"
             class="form-label">
             Logo URL
@@ -35,7 +46,25 @@
             formControlName="imageUrl">
     </div>
 
+    <!-- imageUrl validation -->
+    <div *ngIf="artistForm.controls['imageUrl'].invalid && (artistForm.controls['imageUrl'].dirty || artistForm.controls['imageUrl'].touched)"
+    class="alert alert-danger p-1 fs-s">
+        <div *ngIf="artistForm.controls['imageUrl'].errors?.['pattern']">
+            Link should not contain spaces nor special characters.
+        </div>
+        <div *ngIf="artistForm.controls['imageUrl'].errors?.['maxlength']">
+            Link must be 255 characters long at maximum.
+        </div>
+    </div>
+    <div *ngIf="artistForm.controls['imageUrl'].touched">
+        <div class="alert alert-primary p-1 fs-s" role="alert">
+            Host freely your picture on <a href="https://bitly.com" class="alert-link" target="_blank">bitly</a>.
+            <br>Paste the characters following the slash in the above field.
+        </div>
+    </div>
+
     <button type="submit"
-            class="btn btn-outline-primary">Add a new artist</button>
+            class="btn btn-outline-primary"
+            [disabled]="artistForm.pristine || artistForm.invalid">Add a new artist</button>
 
 </form>
