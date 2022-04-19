@@ -30,10 +30,12 @@
                 <li class="nav-item ms-auto me-2">
                     <span id="playlist" class="nav-link" (click)="onClick($event)">Playlists</span>
                 </li>
+                <button (click)="onSignIn()"
+                        style="width: 74px;"
+                        class="btn btn-outline-primary btn-reversed ms-auto me-2">
+                    Sign in
+                </button>
             </ul>
-            <button (click)="onSignIn()" class="btn btn-outline-primary btn-reversed">
-                Sign in
-            </button>
         </div>
     </div>
 </nav>
