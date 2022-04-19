@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { debounceTime, Subscription } from 'rxjs';
 import { Album } from 'src/app/model/album.model';
 import { AlbumService } from 'src/app/service/album.service';
 import { SearchService } from 'src/app/service/search.service';
@@ -8,24 +9,15 @@ import { SearchService } from 'src/app/service/search.service';
   templateUrl: './albums-list.component.html',
   styleUrls: ['./albums-list.component.scss']
 })
-export class AlbumsListComponent implements OnInit {
+export class AlbumsListComponent implements OnInit, OnDestroy {
 
   albums!: Array<Album>;
+  searchSubscription!: Subscription;
 
   constructor(
     private albumService: AlbumService,
     private searchService: SearchService
   ) {
-    this.searchService.searchSubject.subscribe({
-      next: search => {
-        this.albumService.getAlbumsByNameWithAutocomplete(search).subscribe({
-          next: albums => this.albums = albums,
-          error: () => console.log("An error has occured during the communication with the back-end service")
-        });
-      },
-      error: () => console.log("Subscription to SearchService failed")
-    });
-
     this.albumService.refreshSubject.subscribe({
       next: () => {
         this.albumService.getAlbumsByNameWithAutocomplete('').subscribe({
@@ -38,6 +30,21 @@ export class AlbumsListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.searchSubscription = this.searchService.searchSubject.pipe(
+      debounceTime(500)
+    ).subscribe({
+      next: search => {
+        this.albumService.getAlbumsByNameWithAutocomplete(search).subscribe({
+          next: albums => this.albums = albums,
+          error: () => console.log("An error has occured during the communication with the back-end service")
+        });
+      },
+      error: () => console.log("Subscription to SearchService failed")
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.searchSubscription.unsubscribe();
   }
 
 }
