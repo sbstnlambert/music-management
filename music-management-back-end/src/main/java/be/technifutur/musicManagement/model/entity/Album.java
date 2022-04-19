@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,15 +26,19 @@ public class Album {
     @Column(name = "id", nullable = false)
     private Long id;
 
+    @NotBlank(message = "Name may not be blank")
+    @Size(max = 255, message = "Name must be 255 characters at maximum")
     @Column(name = "name", nullable = false)
     private String name;
 
     @Column(name = "release_date")
     private LocalDate releaseDate;
 
+    @Size(max = 255, message = "Record label must be 255 characters at maximum")
     @Column(name = "record_label")
     private String recordLabel;
 
+    @Size(max = 255, message = "Image URL must be 255 characters at maximum")
     @Column(name = "image_url")
     private String imageUrl;
 
