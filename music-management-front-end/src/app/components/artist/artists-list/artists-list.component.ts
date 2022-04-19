@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { debounceTime } from 'rxjs';
+import { debounceTime, Subscription } from 'rxjs';
 import { Artist } from 'src/app/model/artist.model';
 import { ArtistService } from 'src/app/service/artist.service';
 import { SearchService } from 'src/app/service/search.service';
@@ -10,8 +10,9 @@ import { SearchService } from 'src/app/service/search.service';
   templateUrl: './artists-list.component.html',
   styleUrls: ['./artists-list.component.scss']
 })
-export class ArtistsListComponent implements OnInit {
+export class ArtistsListComponent implements OnInit, OnDestroy {
   public artists!: Array<Artist>;
+  private searchSubscription!: Subscription;
 
   constructor(
     private artistService: ArtistService,
@@ -33,7 +34,7 @@ export class ArtistsListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.searchService.searchSubject.pipe(
+    this.searchSubscription = this.searchService.searchSubject.pipe(
       debounceTime(1000)
     ).subscribe({
       next: search => {
@@ -47,6 +48,10 @@ export class ArtistsListComponent implements OnInit {
       },
       error: () => console.log("Subscription to SearchService failed")
     });
+  }
+
+  ngOnDestroy(): void {
+    this.searchSubscription.unsubscribe();
   }
 
   public onClick(): void {
