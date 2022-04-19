@@ -21,10 +21,10 @@ export class AlbumFormComponent implements OnInit {
     let id: number = artistIdString ? parseInt(artistIdString) : -1;
     if (id && id > 0) {
       this.albumForm = new FormGroup({
-        name: new FormControl(null, Validators.required),
+        name: new FormControl(null, [Validators.required, Validators.maxLength(255)]),
         releaseDate: new FormControl(null),
-        recordLabel: new FormControl(null),
-        imageUrl: new FormControl(null),
+        recordLabel: new FormControl(null, Validators.maxLength(255)),
+        imageUrl: new FormControl(null, [Validators.maxLength(255), Validators.pattern('^[A-Za-z0-9]*$')]),
         artistId: new FormControl(id)
       });
     } else {
