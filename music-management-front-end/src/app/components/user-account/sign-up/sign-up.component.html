@@ -1,0 +1,36 @@
+<div class="container-sm" style="max-width: 550px;">
+    <div class="container d-flex justify-content-center align-items-center pt-5 pb-5">
+        <h2>Sign up</h2>
+    </div> 
+    
+    <form [formGroup]="signUpForm"
+            (ngSubmit)="onSignUp()">
+    
+        <div class="mb-3">
+            <input type="text" class="form-control"
+                    placeholder="Username"
+                    formControlName="username"
+                    autofocus
+                    required>
+        </div>
+    
+        <div class="mb-3">
+            <input type="password" class="form-control"
+                    placeholder="Password"
+                    formControlName="password"
+                    required>
+        </div>
+
+        <div class="mb-3">
+            <input type="email" class="form-control"
+                    placeholder="your@mail.com"
+                    formControlName="email"
+                    required>
+        </div>
+    
+        <button [disabled]="signUpForm.pristine || signUpForm.invalid"
+                 type="submit" class="btn btn-outline-success">
+            Sign up
+        </button>
+    </form>
+</div>
