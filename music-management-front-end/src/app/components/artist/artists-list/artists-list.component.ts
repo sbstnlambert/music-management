@@ -35,7 +35,7 @@ export class ArtistsListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.searchSubscription = this.searchService.searchSubject.pipe(
-      debounceTime(1000)
+      debounceTime(500)
     ).subscribe({
       next: search => {
         this.artistService.getArtistsByNameWithAutocomplete(search).subscribe({
