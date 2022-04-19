@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ArtistService } from 'src/app/service/artist.service';
 import { SearchService } from 'src/app/service/search.service';
 
 @Component({
@@ -14,6 +15,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private searchService: SearchService,
+    private artistService: ArtistService,
     private router: Router
   ) {
     this.searchService.resetSubject.subscribe({
@@ -32,12 +34,12 @@ export class HeaderComponent implements OnInit {
 
   onClick(event: any): void {
     this.onReset();
+    this.artistService.pingRefreshSubject();
     this.router.navigate([event.target.id]);
   }
 
   onReset(): void {
     this.filter = '';
-    this.onChange('');
   }
 
 }

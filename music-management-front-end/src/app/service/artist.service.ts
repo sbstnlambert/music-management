@@ -35,4 +35,8 @@ export class ArtistService {
     );
   }
 
+  public pingRefreshSubject(): void {
+    this.refreshSubject.next('');
+  }
+
 }
