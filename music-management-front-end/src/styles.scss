@@ -46,10 +46,19 @@ li {
     }
 }
 
+.btn-outline-primary.btn-reversed {
+    background-color: #6183ff;
+    border-color: #6183ff;
+    color: white;
+    &:hover {
+        background-color: white;
+        color: #6183ff;
+    }
+}
+
 .card-form:hover {
     cursor: pointer;
 }
-
 .fs-s {
     font-size: small;
 }

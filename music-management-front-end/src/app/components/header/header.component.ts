@@ -42,4 +42,8 @@ export class HeaderComponent implements OnInit {
     this.filter = '';
   }
 
+  onSignIn(): void {
+    this.router.navigate(['signin']);
+  }
+
 }

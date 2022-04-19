@@ -21,6 +21,7 @@ import { TracksListComponent } from './components/track/tracks-list/tracks-list.
 import { NumberSuffixPipe } from './pipe/number-suffix.pipe';
 import { TrackFormComponent } from './components/track/form/track-form/track-form.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SignInComponent } from './components/sign-in/sign-in.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     AlbumsListComponent,
     TracksListComponent,
     AlbumFormComponent,
-    TrackFormComponent
+    TrackFormComponent,
+    SignInComponent
   ],
   imports: [
     BrowserModule,
