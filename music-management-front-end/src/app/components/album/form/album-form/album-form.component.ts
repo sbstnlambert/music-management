@@ -1,7 +1,9 @@
+import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlbumService } from 'src/app/service/album.service';
+import { dateIsNotInFuture } from './releaseDate.validator';
 
 @Component({
   selector: 'app-album-form',
@@ -11,6 +13,8 @@ import { AlbumService } from 'src/app/service/album.service';
 export class AlbumFormComponent implements OnInit {
 
   albumForm!: FormGroup;
+  currentDate: Date = new Date();
+  today: string = formatDate(this.currentDate, 'yyyy-MM-dd', 'en-US');
 
   constructor(
     private service: AlbumService,
@@ -22,7 +26,7 @@ export class AlbumFormComponent implements OnInit {
     if (id && id > 0) {
       this.albumForm = new FormGroup({
         name: new FormControl(null, [Validators.required, Validators.maxLength(255)]),
-        releaseDate: new FormControl(null),
+        releaseDate: new FormControl(null, dateIsNotInFuture),
         recordLabel: new FormControl(null, Validators.maxLength(255)),
         imageUrl: new FormControl(null, [Validators.maxLength(255), Validators.pattern('^[A-Za-z0-9]*$')]),
         artistId: new FormControl(id)
