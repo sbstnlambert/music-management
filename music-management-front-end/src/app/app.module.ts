@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -23,6 +23,7 @@ import { TrackFormComponent } from './components/track/form/track-form/track-for
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SignInComponent } from './components/user-account/sign-in/sign-in.component';
 import { SignUpComponent } from './components/user-account/sign-up/sign-up.component';
+import { HeaderSettersInterceptor } from './interceptor/header-setters.interceptor';
 
 
 @NgModule({
@@ -54,7 +55,12 @@ import { SignUpComponent } from './components/user-account/sign-up/sign-up.compo
     FormsModule,
     FontAwesomeModule
   ],
-  providers: [],
+  providers: [{
+      provide: HTTP_INTERCEPTORS,
+      useClass: HeaderSettersInterceptor,
+      multi: true
+    }
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

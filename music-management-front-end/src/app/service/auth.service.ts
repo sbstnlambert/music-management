@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { UserForm } from '../model/user.model';
 
 @Injectable({
@@ -11,6 +11,7 @@ export class AuthService {
   private _username!: string;
   private _password!: string;
   private _isAuthenticated: boolean = false;
+  private _userRoles!: Array<string>;
   private BASE_URL: string = 'http://localhost:8080/user';
 
   constructor(private http: HttpClient) { }
@@ -27,22 +28,26 @@ export class AuthService {
     return this._isAuthenticated;
   }
 
-  public verifyUserAccountAndSignIn(form: UserForm): boolean {
-    this.http.post<boolean>(`${this.BASE_URL}/verify`, form).subscribe({
-      next: userExists => this.signIn(userExists, form),
-      error: () => {
-        console.log('An error has occured during communication with the back-end service');
-        this._isAuthenticated = false;
-      }
-    });
+  public get userRoles(): Array<string> {
+    return this._userRoles;
+  }
 
-    return this._isAuthenticated;
+  public verifyUserAccountAndSignIn(form: UserForm): Observable<boolean> {
+    return this.http.post<boolean>(`${this.BASE_URL}/verify`, form).pipe(
+      tap({
+        next: userExists => this.signIn(userExists, form)
+      })
+    );
   }
 
   private signIn(userExists: boolean, form: UserForm): void {
     if (userExists) {
       this._username = form.username;
       this._password = form.password;
+      this.http.get<Array<string>>(`${this.BASE_URL}/roles?user=${this._username}`).subscribe({
+        next: roles => this._userRoles = roles,
+        error: () => console.log('An error has occured during communication with the back-end service')
+      });
     }
     this._isAuthenticated = userExists;
   }

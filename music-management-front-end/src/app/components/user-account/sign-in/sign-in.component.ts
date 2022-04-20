@@ -27,11 +27,16 @@ export class SignInComponent implements OnInit {
 
   onSignIn(): void {
     if (this.signInForm.valid) {
-      if (this.authService.verifyUserAccountAndSignIn(this.signInForm.value)) {
-        this.router.navigate(['']);
-      } else {
-        alert('Username and/or password incorrect');
-      }
+      this.authService.verifyUserAccountAndSignIn(this.signInForm.value).subscribe({
+        next: exists => {
+          if (exists) {
+            this.router.navigate(['']);
+          } else {
+            alert('Username and/or password incorrect');
+          }
+        },
+        error: () => console.log('An error has occured during communication with the back-end service')
+      });
     } else {
       console.log('Invalid form');
     }
