@@ -37,7 +37,6 @@ public class Track {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @NotNull(message = "Length may not be null")
     @Column(
         name = "length_in_seconds",
         columnDefinition = "INT(11)",
@@ -51,7 +50,6 @@ public class Track {
     )
     private Long numberOfLikes;
 
-    @NotNull(message = "Album position may not be null")
     @Column(
         name = "album_position",
         columnDefinition = "INT(11)",
