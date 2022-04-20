@@ -40,7 +40,16 @@
         <input type="date"
                 class="form-control"
                 id="release-date"
+                [max]="today"
                 formControlName="releaseDate">
+    </div>
+
+    <!-- releaseDate validation -->
+    <div *ngIf="albumForm.controls['releaseDate'].invalid && (albumForm.controls['releaseDate'].dirty || albumForm.controls['releaseDate'].touched)"
+    class="alert alert-danger p-1 fs-s">
+        <div *ngIf="albumForm.controls['releaseDate'].errors?.['dateIsNotInFuture']">
+            Release date cannot be in the future, even if you come from there.
+        </div>
     </div>
 
     <div class="mb-3">
