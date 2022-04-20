@@ -23,10 +23,10 @@ export class TrackFormComponent implements OnInit {
     if (id && id > 0) {
       this.albumId = id;
       this.trackForm = new FormGroup({
-        name: new FormControl(null, Validators.required),
+        name: new FormControl(null, [Validators.required, Validators.maxLength(255)]),
         lengthInSeconds: new FormControl(null, Validators.required),
         albumPosition: new FormControl(null, Validators.required),
-        videoUrl: new FormControl(null),
+        videoUrl: new FormControl(null, [Validators.required, Validators.maxLength(255), Validators.pattern('^[A-Za-z0-9]*$')]),
         albumId: new FormControl(id)
       });
     } else {

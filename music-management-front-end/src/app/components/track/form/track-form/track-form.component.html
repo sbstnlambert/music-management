@@ -21,6 +21,17 @@
                 formControlName="name">
     </div>
 
+    <!-- name validation -->
+    <div *ngIf="trackForm.controls['name'].invalid && (trackForm.controls['name'].dirty || trackForm.controls['name'].touched)"
+    class="alert alert-danger p-1 fs-s">
+        <div *ngIf="trackForm.controls['name'].errors?.['required']">
+                Name is required.
+        </div>
+        <div *ngIf="trackForm.controls['name'].errors?.['maxlength']">
+                Name must be 255 characters long at maximum.
+        </div>
+    </div>
+
     <div class="mb-3">
         <label for="length" 
                 class="form-label">
@@ -33,6 +44,14 @@
                 formControlName="lengthInSeconds">
     </div>
 
+    <!-- lengthInSeconds validation -->
+    <div *ngIf="trackForm.controls['lengthInSeconds'].invalid && (trackForm.controls['lengthInSeconds'].dirty || trackForm.controls['lengthInSeconds'].touched)"
+    class="alert alert-danger p-1 fs-s">
+        <div *ngIf="trackForm.controls['lengthInSeconds'].errors?.['required']">
+                Length is required.
+        </div>
+    </div>
+
     <div class="mb-3">
         <label for="album-position" 
                 class="form-label">
@@ -42,6 +61,14 @@
                 class="form-control"
                 id="album-position"
                 formControlName="albumPosition">
+    </div>
+
+    <!-- albumPosition validation -->
+    <div *ngIf="trackForm.controls['albumPosition'].invalid && (trackForm.controls['albumPosition'].dirty || trackForm.controls['albumPosition'].touched)"
+    class="alert alert-danger p-1 fs-s">
+        <div *ngIf="trackForm.controls['albumPosition'].errors?.['required']">
+                Album position is required.
+        </div>
     </div>
 
     <label for="video-url"
@@ -60,7 +87,28 @@
             formControlName="videoUrl">
     </div>
 
+    <!-- videoUrl validation -->
+    <div *ngIf="trackForm.controls['videoUrl'].invalid && (trackForm.controls['videoUrl'].dirty || trackForm.controls['videoUrl'].touched)"
+    class="alert alert-danger p-1 fs-s">
+        <div *ngIf="trackForm.controls['videoUrl'].errors?.['required']">
+                Video URL is required.
+        </div>
+        <div *ngIf="trackForm.controls['videoUrl'].errors?.['pattern']">
+                Link should not contain spaces nor special characters.
+        </div>
+        <div *ngIf="trackForm.controls['videoUrl'].errors?.['maxlength']">
+                Link must be 255 characters long at maximum.
+        </div>
+    </div>
+    <div *ngIf="trackForm.controls['videoUrl'].touched">
+        <div class="alert alert-primary p-1 fs-s" role="alert">
+                Host freely your video on <a href="https://y2u.be/" class="alert-link" target="_blank">y2u</a>.
+            <br>Paste the characters following the slash in the above field.
+        </div>
+    </div>
+
     <button type="submit"
-            class="btn btn-outline-primary">Add a new track</button>
+            class="btn btn-outline-primary"
+            [disabled]="trackForm.pristine || trackForm.invalid">Add a new track</button>
 
 </form>

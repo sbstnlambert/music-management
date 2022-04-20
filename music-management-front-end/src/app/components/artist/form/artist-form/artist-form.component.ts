@@ -16,8 +16,8 @@ export class ArtistFormComponent implements OnInit {
   ) { }
 
   artistForm = new FormGroup({
-    name: new FormControl(null, Validators.required),
-    imageUrl: new FormControl(null)
+    name: new FormControl('', [Validators.required, Validators.maxLength(255)]),
+    imageUrl: new FormControl(null, [Validators.maxLength(255), Validators.pattern('^[A-Za-z0-9]*$')])
   });
 
   ngOnInit(): void {

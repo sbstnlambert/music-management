@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -43,7 +44,7 @@ public class TrackController {
 
     // POST - http://localhost:8080/track/add
     @PostMapping("/add")
-    public ResponseEntity<TrackSimpleDTO> insertTrack(@RequestBody TrackForm form) {
+    public ResponseEntity<TrackSimpleDTO> insertTrack(@Valid @RequestBody TrackForm form) {
         return ResponseEntity.ok(service.insertTrack(form));
     }
 

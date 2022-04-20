@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -36,7 +37,7 @@ public class AlbumController {
 
     // POST - http://localhost:8080/album/add
     @PostMapping("/add")
-    public ResponseEntity<AlbumDTO> insertAlbum(@RequestBody AlbumForm form) {
+    public ResponseEntity<AlbumDTO> insertAlbum(@Valid @RequestBody AlbumForm form) {
         return ResponseEntity.ok(service.insertAlbum(form));
     }
 

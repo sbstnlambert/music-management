@@ -21,6 +21,17 @@
                 formControlName="name">
     </div>
 
+    <!-- name validation -->
+    <div *ngIf="albumForm.controls['name'].invalid && (albumForm.controls['name'].dirty || albumForm.controls['name'].touched)"
+    class="alert alert-danger p-1 fs-s">
+        <div *ngIf="albumForm.controls['name'].errors?.['required']">
+            Name is required.
+        </div>
+        <div *ngIf="albumForm.controls['name'].errors?.['maxlength']">
+            Name must be 255 characters long at maximum.
+        </div>
+    </div>
+
     <div class="mb-3">
         <label for="release-date" 
                 class="form-label">
@@ -29,7 +40,16 @@
         <input type="date"
                 class="form-control"
                 id="release-date"
+                [max]="today"
                 formControlName="releaseDate">
+    </div>
+
+    <!-- releaseDate validation -->
+    <div *ngIf="albumForm.controls['releaseDate'].invalid && (albumForm.controls['releaseDate'].dirty || albumForm.controls['releaseDate'].touched)"
+    class="alert alert-danger p-1 fs-s">
+        <div *ngIf="albumForm.controls['releaseDate'].errors?.['dateIsNotInFuture']">
+            Release date cannot be in the future, even if you come from there.
+        </div>
     </div>
 
     <div class="mb-3">
@@ -41,6 +61,14 @@
                 class="form-control"
                 id="record-label"
                 formControlName="recordLabel">
+    </div>
+
+    <!-- recordLabel validation -->
+    <div *ngIf="albumForm.controls['recordLabel'].invalid && (albumForm.controls['recordLabel'].dirty || albumForm.controls['recordLabel'].touched)"
+    class="alert alert-danger p-1 fs-s">
+        <div *ngIf="albumForm.controls['recordLabel'].errors?.['maxlength']">
+            Record label must be 255 characters long at maximum.
+        </div>
     </div>
 
     <label for="image-url"
@@ -59,7 +87,25 @@
             formControlName="imageUrl">
     </div>
 
+    <!-- imageUrl validation -->
+    <div *ngIf="albumForm.controls['imageUrl'].invalid && (albumForm.controls['imageUrl'].dirty || albumForm.controls['imageUrl'].touched)"
+    class="alert alert-danger p-1 fs-s">
+        <div *ngIf="albumForm.controls['imageUrl'].errors?.['pattern']">
+            Link should not contain spaces nor special characters.
+        </div>
+        <div *ngIf="albumForm.controls['imageUrl'].errors?.['maxlength']">
+            Link must be 255 characters long at maximum.
+        </div>
+    </div>
+    <div *ngIf="albumForm.controls['imageUrl'].touched">
+        <div class="alert alert-primary p-1 fs-s" role="alert">
+            Host freely your picture on <a href="https://bitly.com" class="alert-link" target="_blank">bitly</a>.
+            <br>Paste the characters following the slash in the above field.
+        </div>
+    </div>
+
     <button type="submit"
-            class="btn btn-outline-primary">Add a new album</button>
+            class="btn btn-outline-primary"
+            [disabled]="albumForm.pristine || albumForm.invalid">Add a new album</button>
 
 </form>

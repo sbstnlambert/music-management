@@ -14,6 +14,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -28,6 +32,8 @@ public class Track {
     @Column(name = "id", nullable = false)
     private Long id;
 
+    @NotBlank(message = "Name may not be blank")
+    @Size(max = 255, message = "Name must be 255 characters at maximum")
     @Column(name = "name", nullable = false)
     private String name;
 
@@ -51,6 +57,8 @@ public class Track {
     )
     private int albumPosition;
 
+    @NotBlank(message = "Video URL may not be blank")
+    @Size(max = 255, message = "Video URL must be 255 characters at maximum")
     @Column(name = "video_url")
     private String videoUrl;
 
