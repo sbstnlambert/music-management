@@ -12,15 +12,16 @@ import { TrackFormComponent } from './components/track/form/track-form/track-for
 import { TrackDetailedComponent } from './components/track/track-detailed/track-detailed.component';
 import { TracksListComponent } from './components/track/tracks-list/tracks-list.component';
 import { SignUpComponent } from './components/user-account/sign-up/sign-up.component';
+import { AdminGuard } from './guard/admin.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'artist', pathMatch: 'full'},
   { path: 'artist', component: ArtistsListComponent },
-  { path: 'artist/add', component: ArtistFormComponent },
-  { path: 'artist/:id/album/add', component: AlbumFormComponent },
+  { path: 'artist/add', component: ArtistFormComponent, canActivate: [AdminGuard] },
+  { path: 'artist/:id/album/add', component: AlbumFormComponent, canActivate: [AdminGuard] },
   { path: 'artist/:id', component: ArtistDetailComponent },
   { path: 'album', component: AlbumsListComponent },
-  { path: 'album/:id/track/add', component: TrackFormComponent },
+  { path: 'album/:id/track/add', component: TrackFormComponent, canActivate: [AdminGuard] },
   { path: 'album/:id', component: AlbumDetailedComponent },
   { path: 'track', component: TracksListComponent },
   { path: 'track/:id', component: TrackDetailedComponent },
