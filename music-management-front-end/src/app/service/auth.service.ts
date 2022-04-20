@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
-import { UserForm } from '../model/user.model';
+import { User, UserSignInForm, UserSignUpForm } from '../model/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +32,7 @@ export class AuthService {
     return this._userRoles;
   }
 
-  public verifyUserAccountAndSignIn(form: UserForm): Observable<boolean> {
+  public verifyUserAccountAndSignIn(form: UserSignInForm): Observable<boolean> {
     return this.http.post<boolean>(`${this.BASE_URL}/verify`, form).pipe(
       tap({
         next: userExists => this.signIn(userExists, form)
@@ -40,7 +40,7 @@ export class AuthService {
     );
   }
 
-  private signIn(userExists: boolean, form: UserForm): void {
+  private signIn(userExists: boolean, form: UserSignInForm): void {
     if (userExists) {
       this._username = form.username;
       this._password = form.password;
@@ -56,5 +56,13 @@ export class AuthService {
     this._username = '';
     this._password = '';
     this._isAuthenticated = false;
+  }
+
+  public signUp(form: UserSignUpForm): Observable<boolean> {
+    return this.http.post<boolean>(`${this.BASE_URL}/add`, form).pipe(
+      tap({
+        next: userCreated => this.signIn(userCreated, form)
+      })
+    );
   }
 }
