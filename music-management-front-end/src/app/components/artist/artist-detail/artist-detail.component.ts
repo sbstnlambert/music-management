@@ -4,6 +4,7 @@ import { Album } from 'src/app/model/album.model';
 import { Artist } from 'src/app/model/artist.model';
 import { AlbumService } from 'src/app/service/album.service';
 import { ArtistService } from 'src/app/service/artist.service';
+import { AuthService } from 'src/app/service/auth.service';
 import { SearchService } from 'src/app/service/search.service';
 
 @Component({
@@ -21,7 +22,8 @@ export class ArtistDetailComponent implements OnInit {
     private router: Router, 
     private albumService: AlbumService,
     private artistService: ArtistService,
-    private searchService: SearchService
+    private searchService: SearchService,
+    public authService: AuthService
   ) {
     let artistIdString: string | null = this.route.snapshot.paramMap.get('id');
     let artistId: number = artistIdString ? parseInt(artistIdString) : -1;

@@ -7,7 +7,7 @@
 <div *ngIf="artists; else loading">
 
     <div class="m-5 d-flex justify-content-center flex-row flex-wrap">
-        <div class="card m-1 card-form" style="width: 18rem;" (click)="onClick()">
+        <div *ngIf="authService.userRoles?.includes('ROLE_ADMIN')" class="card m-1 card-form" style="width: 18rem;" (click)="onClick()">
             <img src="assets/add-artist-cross.svg" class="card-img-top" alt="Card to add a new artist">
             <div class="card-body">
                 <h5 class="card-title">New feature!</h5>

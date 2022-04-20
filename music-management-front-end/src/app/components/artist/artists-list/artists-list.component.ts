@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { debounceTime, Subscription } from 'rxjs';
 import { Artist } from 'src/app/model/artist.model';
 import { ArtistService } from 'src/app/service/artist.service';
+import { AuthService } from 'src/app/service/auth.service';
 import { SearchService } from 'src/app/service/search.service';
 
 @Component({
@@ -17,6 +18,7 @@ export class ArtistsListComponent implements OnInit, OnDestroy {
   constructor(
     private artistService: ArtistService,
     private searchService: SearchService,
+    public authService: AuthService,
     private router: Router
   ) {
     this.artistService.refreshSubject.subscribe({

@@ -63,6 +63,7 @@ export class AuthService {
   public signOut(): void {
     this._username = '';
     this._password = '';
+    this._userRoles = [];
     this._isAuthenticated = false;
   }
 }

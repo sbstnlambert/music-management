@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Album } from 'src/app/model/album.model';
 import { TrackSimple } from 'src/app/model/track.model';
 import { AlbumService } from 'src/app/service/album.service';
+import { AuthService } from 'src/app/service/auth.service';
 import { TrackService } from 'src/app/service/track.service';
 
 @Component({
@@ -19,7 +20,8 @@ export class AlbumDetailedComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private albumService: AlbumService,
-    private trackService: TrackService
+    private trackService: TrackService,
+    public authService: AuthService
   ) {
     let albumIdString: string | null = this.route.snapshot.paramMap.get('id');
     let albumId: number = albumIdString ? parseInt(albumIdString) : -1;
