@@ -2,8 +2,9 @@ import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { noBlankSpaces } from 'src/app/components/validation/no-blank-spaces.validator';
 import { AlbumService } from 'src/app/service/album.service';
-import { dateIsNotInFuture } from './releaseDate.validator';
+import { dateIsNotInFuture } from '../../../validation/release-date.validator';
 
 @Component({
   selector: 'app-album-form',
@@ -25,7 +26,7 @@ export class AlbumFormComponent implements OnInit {
     let id: number = artistIdString ? parseInt(artistIdString) : -1;
     if (id && id > 0) {
       this.albumForm = new FormGroup({
-        name: new FormControl(null, [Validators.required, Validators.maxLength(255)]),
+        name: new FormControl(null, [Validators.required, Validators.maxLength(255), noBlankSpaces]),
         releaseDate: new FormControl(null, dateIsNotInFuture),
         recordLabel: new FormControl(null, Validators.maxLength(255)),
         imageUrl: new FormControl(null, [Validators.maxLength(255), Validators.pattern('^[A-Za-z0-9]*$')]),
