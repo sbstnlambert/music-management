@@ -46,7 +46,6 @@ export class TracksListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.searchSubscription.unsubscribe();
-    this.refreshSubscription.unsubscribe();
   }
 
 }

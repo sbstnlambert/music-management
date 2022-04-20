@@ -58,7 +58,6 @@ export class ArtistsListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.searchSubscription.unsubscribe();
-    this.refreshSubscription.unsubscribe();
   }
 
 }

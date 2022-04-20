@@ -46,7 +46,6 @@ export class AlbumsListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.searchSubscription.unsubscribe();
-    this.refreshSubscription.unsubscribe();
   }
 
 }
