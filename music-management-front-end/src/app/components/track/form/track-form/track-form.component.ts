@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { noBlankSpaces } from 'src/app/components/validation/no-blank-spaces.validator';
 import { TrackService } from 'src/app/service/track.service';
 
 @Component({
@@ -23,7 +24,7 @@ export class TrackFormComponent implements OnInit {
     if (id && id > 0) {
       this.albumId = id;
       this.trackForm = new FormGroup({
-        name: new FormControl(null, [Validators.required, Validators.maxLength(255)]),
+        name: new FormControl(null, [Validators.required, Validators.maxLength(255), noBlankSpaces]),
         lengthInSeconds: new FormControl(null, [Validators.required, Validators.min(1)]),
         albumPosition: new FormControl(null, [Validators.required, Validators.min(1)]),
         videoUrl: new FormControl(null, [Validators.required, Validators.maxLength(255)]),
