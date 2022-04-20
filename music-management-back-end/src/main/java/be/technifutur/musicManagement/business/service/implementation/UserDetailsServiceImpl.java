@@ -31,10 +31,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                 );
     }
 
-    public UserDTO createUserAccount(UserForm form) {
+    public Boolean createUserAccount(UserForm form) {
         User user = mapper.formToEntity(form);
         user = userRepository.save(user);
-        return mapper.entityToDTO(user);
+        return user != null;
     }
 
     public Boolean verifyUserAccount(UserLogInForm form) throws UsernameNotFoundException {

@@ -30,7 +30,7 @@ public class UserController {
 
     // POST - http://localhost:8080/user/add
     @PostMapping("/add")
-    public UserDTO createUserAccount(@RequestBody UserForm form) {
+    public Boolean createUserAccount(@RequestBody UserForm form) {
         return this.userDetailsService.createUserAccount(form);
     }
 
