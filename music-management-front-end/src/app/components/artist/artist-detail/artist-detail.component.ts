@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Album } from 'src/app/model/album.model';
 import { Artist } from 'src/app/model/artist.model';
 import { AlbumService } from 'src/app/service/album.service';
@@ -12,10 +13,11 @@ import { SearchService } from 'src/app/service/search.service';
   templateUrl: './artist-detail.component.html',
   styleUrls: ['./artist-detail.component.scss']
 })
-export class ArtistDetailComponent implements OnInit {
+export class ArtistDetailComponent implements OnInit, OnDestroy {
 
   public artist!: Artist;
   public albums!: Array<Album>;
+  private refreshSubscription!: Subscription;
 
   constructor(
     private route: ActivatedRoute,
@@ -39,7 +41,7 @@ export class ArtistDetailComponent implements OnInit {
         error: () => console.log("An error has occured while communicating with the back-end service")
       });
 
-      this.albumService.refreshSubject.subscribe({
+      this.refreshSubscription = this.albumService.refreshSubject.subscribe({
         next: () => {
           this.albumService.getAlbumsByArtist(artistId).subscribe({
             next: albums => this.albums = albums,
@@ -59,6 +61,10 @@ export class ArtistDetailComponent implements OnInit {
   public onClick(): void {
     this.searchService.resetSearch();
     this.router.navigate(['artist', this.artist.id, 'album', 'add']);
+  }
+
+  ngOnDestroy(): void {
+    this.refreshSubscription.unsubscribe();
   }
 
 }
