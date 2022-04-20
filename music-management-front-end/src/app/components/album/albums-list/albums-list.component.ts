@@ -13,6 +13,7 @@ export class AlbumsListComponent implements OnInit, OnDestroy {
 
   albums!: Array<Album>;
   private searchSubscription!: Subscription;
+  private refreshSubscription!: Subscription;
 
   constructor(
     private albumService: AlbumService,
@@ -45,6 +46,7 @@ export class AlbumsListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.searchSubscription.unsubscribe();
+    this.refreshSubscription.unsubscribe();
   }
 
 }
