@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { debounceTime, Subscription } from 'rxjs';
 import { Artist } from 'src/app/model/artist.model';
 import { ArtistService } from 'src/app/service/artist.service';
+import { AuthService } from 'src/app/service/auth.service';
 import { SearchService } from 'src/app/service/search.service';
 
 @Component({
@@ -13,13 +14,15 @@ import { SearchService } from 'src/app/service/search.service';
 export class ArtistsListComponent implements OnInit, OnDestroy {
   public artists!: Array<Artist>;
   private searchSubscription!: Subscription;
+  private refreshSubscription!: Subscription;
 
   constructor(
     private artistService: ArtistService,
     private searchService: SearchService,
+    public authService: AuthService,
     private router: Router
   ) {
-    this.artistService.refreshSubject.subscribe({
+    this.refreshSubscription = this.artistService.refreshSubject.subscribe({
       next: () => {
         this.artistService.getAllArtists().subscribe({
           next: artists => {
@@ -48,13 +51,13 @@ export class ArtistsListComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnDestroy(): void {
-    this.searchSubscription.unsubscribe();
-  }
-
   public onClick(): void {
     this.searchService.resetSearch();
     this.router.navigate(['artist', 'add']);
+  }
+
+  ngOnDestroy(): void {
+    this.searchSubscription.unsubscribe();
   }
 
 }

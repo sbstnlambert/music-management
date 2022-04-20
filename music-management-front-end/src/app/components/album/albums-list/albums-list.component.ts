@@ -13,6 +13,7 @@ export class AlbumsListComponent implements OnInit, OnDestroy {
 
   albums!: Array<Album>;
   private searchSubscription!: Subscription;
+  private refreshSubscription!: Subscription;
 
   constructor(
     private albumService: AlbumService,

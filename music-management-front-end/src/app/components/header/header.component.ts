@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ArtistService } from 'src/app/service/artist.service';
+import { AuthService } from 'src/app/service/auth.service';
 import { SearchService } from 'src/app/service/search.service';
 
 @Component({
@@ -16,6 +17,7 @@ export class HeaderComponent implements OnInit {
   constructor(
     private searchService: SearchService,
     private artistService: ArtistService,
+    public authService: AuthService,
     private router: Router
   ) {
     this.searchService.resetSubject.subscribe({
@@ -40,6 +42,14 @@ export class HeaderComponent implements OnInit {
 
   onReset(): void {
     this.filter = '';
+  }
+
+  onSignIn(): void {
+    this.router.navigate(['signin']);
+  }
+
+  onSignOut(): void {
+    this.authService.signOut();
   }
 
 }

@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Album } from 'src/app/model/album.model';
 import { AlbumService } from 'src/app/service/album.service';
+import { AuthService } from 'src/app/service/auth.service';
 import { SearchService } from 'src/app/service/search.service';
 
 @Component({
@@ -18,7 +19,8 @@ export class AlbumCardComponent implements OnInit {
   constructor(
     private service: AlbumService,
     private router: Router,
-    private searchService: SearchService
+    private searchService: SearchService,
+    public authService: AuthService
   ) { }
 
   ngOnInit(): void {

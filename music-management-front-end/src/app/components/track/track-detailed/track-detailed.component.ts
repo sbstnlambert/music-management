@@ -18,7 +18,7 @@ export class TrackDetailedComponent implements OnInit {
     private route: ActivatedRoute,
     private service: TrackService
     ) { 
-      let trackIdString: string | null = route.snapshot.paramMap.get('id');
+      let trackIdString: string | null = this.route.snapshot.paramMap.get('id');
       let trackId: number = trackIdString ? parseInt(trackIdString) : -1;
 
       if (trackId && trackId > 0) {

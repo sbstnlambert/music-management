@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -21,6 +21,9 @@ import { TracksListComponent } from './components/track/tracks-list/tracks-list.
 import { NumberSuffixPipe } from './pipe/number-suffix.pipe';
 import { TrackFormComponent } from './components/track/form/track-form/track-form.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SignInComponent } from './components/user-account/sign-in/sign-in.component';
+import { SignUpComponent } from './components/user-account/sign-up/sign-up.component';
+import { HeaderSettersInterceptor } from './interceptor/header-setters.interceptor';
 
 
 @NgModule({
@@ -40,7 +43,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     AlbumsListComponent,
     TracksListComponent,
     AlbumFormComponent,
-    TrackFormComponent
+    TrackFormComponent,
+    SignInComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +55,12 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FormsModule,
     FontAwesomeModule
   ],
-  providers: [],
+  providers: [{
+      provide: HTTP_INTERCEPTORS,
+      useClass: HeaderSettersInterceptor,
+      multi: true
+    }
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

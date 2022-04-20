@@ -11,9 +11,11 @@
         <p class="card-text d-flex justify-content-between align-items-center"
            style="height: 100%;">
            {{ album.name }}
-           <button *ngIf="isHovered" class="btn btn-outline-danger btn-reversed"
-                    (click)="onDelete()">Delete</button>
+           <button *ngIf="isHovered && authService.userRoles?.includes('ROLE_ADMIN')"
+                    class="btn btn-outline-danger btn-reversed"
+                    (click)="onDelete()">
+                Delete
+            </button>
         </p>
     </div>
 </div>
-

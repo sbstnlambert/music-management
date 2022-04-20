@@ -7,7 +7,7 @@
             (mouseenter)="onHoverDeleteButton()"
             (mouseleave)="onHoverDeleteButton()"
             (click)="onDelete()"
-            *ngIf="isHovered">
+            *ngIf="isHovered  && authService.userRoles?.includes('ROLE_ADMIN')">
         <fa-icon [icon]="faTrashCan" [styles]="{'color': iconColor}" size="lg"></fa-icon>
     </button>
     <div class="d-flex ps-3 pe-3 justify-content-between" style="flex-grow: 1;" (click)="onClick()">

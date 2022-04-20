@@ -1,0 +1,34 @@
+<div class="container-sm mb-3" style="max-width: 550px;">
+    <div class="container d-flex justify-content-center align-items-center pt-5 pb-5">
+        <h2>Sign in</h2>
+    </div> 
+    
+    <form [formGroup]="signInForm"
+            (ngSubmit)="onSignIn()">
+    
+        <div class="mb-3">
+            <input type="text" class="form-control"
+                    placeholder="Username"
+                    formControlName="username"
+                    autofocus
+                    required>
+        </div>
+    
+        <div class="mb-3">
+            <input type="password" class="form-control"
+                    placeholder="Password"
+                    formControlName="password"
+                    required>
+        </div>
+    
+        <button [disabled]="signInForm.pristine || signInForm.invalid"
+                 type="submit" class="btn btn-outline-primary">
+            Sign in
+        </button>
+    </form>
+    
+    <p>Still no account? Sign up right now!</p>
+    <button (click)="onSignUp()" class="btn btn-outline-success">
+        Sign up
+    </button>
+</div>

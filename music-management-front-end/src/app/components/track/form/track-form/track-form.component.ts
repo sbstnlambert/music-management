@@ -24,9 +24,10 @@ export class TrackFormComponent implements OnInit {
       this.albumId = id;
       this.trackForm = new FormGroup({
         name: new FormControl(null, [Validators.required, Validators.maxLength(255)]),
-        lengthInSeconds: new FormControl(null, Validators.required),
-        albumPosition: new FormControl(null, Validators.required),
-        videoUrl: new FormControl(null, [Validators.required, Validators.maxLength(255), Validators.pattern('^[A-Za-z0-9]*$')]),
+        lengthInSeconds: new FormControl(null, [Validators.required, Validators.min(1)]),
+        albumPosition: new FormControl(null, [Validators.required, Validators.min(1)]),
+        videoUrl: new FormControl(null, [Validators.required, Validators.maxLength(255)]),
+        // videoUrl: new FormControl(null, [Validators.required, Validators.maxLength(255), Validators.pattern('^[A-Za-z0-9]*$')]),
         albumId: new FormControl(id)
       });
     } else {

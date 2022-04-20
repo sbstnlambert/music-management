@@ -50,6 +50,9 @@
         <div *ngIf="trackForm.controls['lengthInSeconds'].errors?.['required']">
                 Length is required.
         </div>
+        <div *ngIf="trackForm.controls['lengthInSeconds'].errors?.['min']">
+                Length should be at least 1 second.
+        </div>
     </div>
 
     <div class="mb-3">
@@ -69,6 +72,9 @@
         <div *ngIf="trackForm.controls['albumPosition'].errors?.['required']">
                 Album position is required.
         </div>
+        <div *ngIf="trackForm.controls['albumPosition'].errors?.['min']">
+                Album position should be at least 1.
+        </div>
     </div>
 
     <label for="video-url"
@@ -78,7 +84,7 @@
     <div class="input-group mb-3">
         <span class="input-group-text"
             id="basic-addon3">
-            https://youtu.be/ 
+            https://www.youtube.com/watch?v= 
         </span>
         <input type="text"
             class="form-control" 
@@ -93,9 +99,9 @@
         <div *ngIf="trackForm.controls['videoUrl'].errors?.['required']">
                 Video URL is required.
         </div>
-        <div *ngIf="trackForm.controls['videoUrl'].errors?.['pattern']">
+        <!-- <div *ngIf="trackForm.controls['videoUrl'].errors?.['pattern']">
                 Link should not contain spaces nor special characters.
-        </div>
+        </div> -->
         <div *ngIf="trackForm.controls['videoUrl'].errors?.['maxlength']">
                 Link must be 255 characters long at maximum.
         </div>

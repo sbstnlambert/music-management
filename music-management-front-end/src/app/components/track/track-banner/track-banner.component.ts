@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { TrackSimple } from 'src/app/model/track.model';
+import { AuthService } from 'src/app/service/auth.service';
 import { SearchService } from 'src/app/service/search.service';
 import { TrackService } from 'src/app/service/track.service';
 
@@ -24,7 +25,8 @@ export class TrackBannerComponent implements OnInit {
   constructor(
     private router: Router,
     private searchService: SearchService,
-    private trackService: TrackService
+    private trackService: TrackService,
+    public authService: AuthService
   ) { }
 
   ngOnInit(): void {

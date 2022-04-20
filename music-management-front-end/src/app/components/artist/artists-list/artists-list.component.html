@@ -7,12 +7,12 @@
 <div *ngIf="artists; else loading">
 
     <div class="m-5 d-flex justify-content-center flex-row flex-wrap">
-        <div class="card m-1 card-form" style="width: 18rem;" (click)="onClick()">
+        <div *ngIf="authService.userRoles?.includes('ROLE_ADMIN')" class="card m-1 card-form" style="width: 18rem;" (click)="onClick()">
             <img src="assets/add-artist-cross.svg" class="card-img-top" alt="Card to add a new artist">
             <div class="card-body">
                 <h5 class="card-title">New feature!</h5>
                 <p class="card-text">Can't find your favorite artist?<br>Click here to add it to our database by using the provided form.</p>
-                <button routerLink="/artist/add" class="btn btn-outline-primary">Add an artist</button>
+                <button routerLink="/artist/add" class="btn btn-outline-primary btn-reversed">Add an artist</button>
             </div>
         </div>
         <app-artist-card *ngFor="let artist of artists" 
