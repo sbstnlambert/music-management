@@ -1,7 +1,6 @@
 package be.technifutur.musicManagement.controller;
 
 import be.technifutur.musicManagement.business.service.implementation.UserDetailsServiceImpl;
-import be.technifutur.musicManagement.model.dto.UserDTO;
 import be.technifutur.musicManagement.model.form.UserForm;
 import be.technifutur.musicManagement.model.form.UserLogInForm;
 import lombok.AllArgsConstructor;
