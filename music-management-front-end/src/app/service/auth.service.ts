@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
-import { User, UserSignInForm, UserSignUpForm } from '../model/user.model';
+import { UserSignInForm, UserSignUpForm } from '../model/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -52,17 +52,17 @@ export class AuthService {
     this._isAuthenticated = userExists;
   }
 
-  public signOut(): void {
-    this._username = '';
-    this._password = '';
-    this._isAuthenticated = false;
-  }
-
   public signUp(form: UserSignUpForm): Observable<boolean> {
     return this.http.post<boolean>(`${this.BASE_URL}/add`, form).pipe(
       tap({
         next: userCreated => this.signIn(userCreated, form)
       })
     );
+  }
+
+  public signOut(): void {
+    this._username = '';
+    this._password = '';
+    this._isAuthenticated = false;
   }
 }
