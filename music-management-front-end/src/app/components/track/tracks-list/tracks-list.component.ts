@@ -13,12 +13,13 @@ export class TracksListComponent implements OnInit, OnDestroy {
 
   tracks!: Array<TrackSimple>;
   private searchSubscription!: Subscription;
+  private refreshSubscription!: Subscription;
 
   constructor(
     private searchService: SearchService,
     private trackService: TrackService
   ) {
-    this.trackService.refreshSubject.subscribe({
+    this.refreshSubscription = this.trackService.refreshSubject.subscribe({
       next: () => {
         this.trackService.getTracksByNameWithAutocomplete('').subscribe({
           next: tracks => this.tracks = tracks,
@@ -45,6 +46,7 @@ export class TracksListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.searchSubscription.unsubscribe();
+    this.refreshSubscription.unsubscribe();
   }
 
 }
