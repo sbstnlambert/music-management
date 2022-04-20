@@ -30,11 +30,18 @@
                 <li class="nav-item ms-auto me-2">
                     <span id="playlist" class="nav-link" (click)="onClick($event)">Playlists</span>
                 </li>
-                <button (click)="onSignIn()"
+                <button *ngIf="!authService.isAuthenticated"
+                        (click)="onSignIn()"
                         style="width: 74px;"
                         class="btn btn-outline-primary btn-reversed ms-auto me-2">
                     Sign in
                 </button>
+                <div *ngIf="authService.isAuthenticated">
+                    <select class="form-select me-2" style="width: 150px;">
+                        <option value="" disabled selected>{{ authService.username }}</option>
+                        <option value="sign-out" (click)="onSignOut()">Sign out</option>
+                    </select>
+                </div>
             </ul>
         </div>
     </div>
