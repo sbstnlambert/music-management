@@ -25,6 +25,9 @@
         <div *ngIf="artistForm.controls['name'].errors?.['required']">
             Name is required.
         </div>
+        <div *ngIf="artistForm.controls['name'].errors?.['noBlankSpaces']">
+            Name must contain at least one character.
+        </div>
         <div *ngIf="artistForm.controls['name'].errors?.['maxlength']">
             Name must be 255 characters long at maximum.
         </div>
