@@ -185,7 +185,7 @@ public class DatabaseFiller implements InitializingBean {
                 .albumPosition(1)
                 .album(trench)
                 .artist(twentyOnePilots)
-                .videoUrl("https://www.youtube.com/watch?v=UOUBW8bkjQ4")
+                .videoUrl("UOUBW8bkjQ4")
                 .build();
         trackRepository.save(jumpsuit);
 
@@ -196,7 +196,7 @@ public class DatabaseFiller implements InitializingBean {
                 .albumPosition(2)
                 .album(trench)
                 .artist(twentyOnePilots)
-                .videoUrl("https://www.youtube.com/watch?v=uv_1AKKKJnk")
+                .videoUrl("uv_1AKKKJnk")
                 .build();
         trackRepository.save(levitate);
 
@@ -207,7 +207,7 @@ public class DatabaseFiller implements InitializingBean {
                 .albumPosition(3)
                 .album(trench)
                 .artist(twentyOnePilots)
-                .videoUrl("https://www.youtube.com/watch?v=OmL9TqTFIAc")
+                .videoUrl("OmL9TqTFIAc")
                 .build();
         trackRepository.save(morph);
 
@@ -218,7 +218,7 @@ public class DatabaseFiller implements InitializingBean {
                 .albumPosition(4)
                 .album(trench)
                 .artist(twentyOnePilots)
-                .videoUrl("https://www.youtube.com/watch?v=8mn-FFjIbo8")
+                .videoUrl("8mn-FFjIbo8")
                 .build();
         trackRepository.save(myBlood);
 
@@ -229,7 +229,7 @@ public class DatabaseFiller implements InitializingBean {
                 .albumPosition(1)
                 .album(astronomical)
                 .artist(maskedWolf)
-                .videoUrl("https://www.youtube.com/watch?v=w_u8_gJsaAg")
+                .videoUrl("w_u8_gJsaAg")
                 .build();
         trackRepository.save(astronomicalTrack);
 
@@ -240,7 +240,7 @@ public class DatabaseFiller implements InitializingBean {
                 .albumPosition(2)
                 .album(astronomical)
                 .artist(maskedWolf)
-                .videoUrl("https://www.youtube.com/watch?v=3NmmMcQ_6lY")
+                .videoUrl("3NmmMcQ_6lY")
                 .build();
         trackRepository.save(gravityGlidin);
 
@@ -251,7 +251,7 @@ public class DatabaseFiller implements InitializingBean {
                 .albumPosition(1)
                 .album(deutschland)
                 .artist(rammstein)
-                .videoUrl("https://www.youtube.com/watch?v=Z4ZrzuZLuC4")
+                .videoUrl("Z4ZrzuZLuC4")
                 .build();
         trackRepository.save(deutschlandTrack);
         //endregion

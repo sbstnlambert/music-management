@@ -37,7 +37,7 @@
                     Sign in
                 </button>
                 <div *ngIf="authService.isAuthenticated">
-                    <select class="form-select me-2" style="width: 150px;">
+                    <select class="form-select ms-auto me-2" style="width: 150px;">
                         <option value="" disabled selected>{{ authService.username }}</option>
                         <option value="sign-out" (click)="onSignOut()">Sign out</option>
                     </select>
