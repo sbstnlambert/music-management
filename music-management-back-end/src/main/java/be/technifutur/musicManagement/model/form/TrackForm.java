@@ -11,11 +11,10 @@ public class TrackForm {
     @Size(max = 255, message = "Name must be 255 characters at maximum")
     private String name;
 
-    @NotNull(message = "Length may not be null")
     @Min(value = 1, message = "Length must be at least 1 second")
     private int lengthInSeconds;
 
-    @NotNull(message = "Album position may not be null")
+    @Min(value = 1, message = "Album position must be at least 1")
     private int albumPosition;
 
     @NotBlank(message = "Video URL may not be blank")
