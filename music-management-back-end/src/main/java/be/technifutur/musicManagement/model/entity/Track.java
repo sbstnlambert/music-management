@@ -32,7 +32,7 @@ public class Track {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @NotEmpty(message = "Name may not be empty")
+    @NotBlank(message = "Name may not be blank")
     @Size(max = 255, message = "Name must be 255 characters at maximum")
     @Column(name = "name", nullable = false)
     private String name;
