@@ -1,6 +1,7 @@
 package be.technifutur.musicManagement.business.service.implementation;
 
 import be.technifutur.musicManagement.business.mapper.UserMapper;
+import be.technifutur.musicManagement.business.service.specification.PlaylistService;
 import be.technifutur.musicManagement.model.entity.User;
 import be.technifutur.musicManagement.model.form.UserForm;
 import be.technifutur.musicManagement.model.form.UserLogInForm;
@@ -19,6 +20,7 @@ import java.util.List;
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     private final UserRepository userRepository;
+    private final PlaylistService playlistService;
     private final UserMapper mapper;
     private final PasswordEncoder encoder;
 
@@ -33,6 +35,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public Boolean createUserAccount(UserForm form) {
         User user = mapper.formToEntity(form);
         user = userRepository.save(user);
+        // Add automatically a "Liked tracks" Playlist to a new User
+        this.playlistService.createPlaylist(user.getUsername(), "Liked tracks");
         return user != null;
     }
 

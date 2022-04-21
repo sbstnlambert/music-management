@@ -282,13 +282,8 @@ public class DatabaseFiller implements InitializingBean {
 
         // region PLAYLIST
         Playlist p1Lio = new Playlist();
-        p1Lio.setName("Pop, Rap, Nu-metal");
+        p1Lio.setName("Liked tracks");
         p1Lio.setUser(lionel);
-        p1Lio.setTracks(Arrays.asList(
-                astronomicalTrack,
-                jumpsuit,
-                levitate
-        ));
         playlistRepository.save(p1Lio);
 
         Playlist p2Lio = new Playlist();
@@ -300,14 +295,24 @@ public class DatabaseFiller implements InitializingBean {
         ));
         playlistRepository.save(p2Lio);
 
-        Playlist pSeb = new Playlist();
-        pSeb.setName("Masked Wolf preferred");
-        pSeb.setUser(seb);
-        pSeb.setTracks(Arrays.asList(
+        Playlist p1Seb = new Playlist();
+        p1Seb.setName("Liked tracks");
+        p1Seb.setUser(seb);
+        playlistRepository.save(p1Seb);
+
+        Playlist p2Seb = new Playlist();
+        p2Seb.setName("Masked Wolf preferred");
+        p2Seb.setUser(seb);
+        p2Seb.setTracks(Arrays.asList(
                 astronomicalTrack,
                 gravityGlidin
         ));
-        playlistRepository.save(pSeb);
+        playlistRepository.save(p2Seb);
+
+        Playlist p1Admin = new Playlist();
+        p1Admin.setName("Liked tracks");
+        p1Admin.setUser(admin);
+        playlistRepository.save(p1Admin);
         // endregion
 
     }

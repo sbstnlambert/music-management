@@ -2,6 +2,7 @@ package be.technifutur.musicManagement.business.service.implementation;
 
 import be.technifutur.musicManagement.business.service.specification.PlaylistService;
 import be.technifutur.musicManagement.model.dto.PlaylistDTO;
+import be.technifutur.musicManagement.model.dto.TrackSimpleDTO;
 
 import java.util.Arrays;
 import java.util.List;
@@ -39,6 +40,26 @@ public class PlaylistServiceMock implements PlaylistService {
                         .name("Test playlist 3")
                         .build()
         );
+    }
+
+    @Override
+    public TrackSimpleDTO removeTrackFromPlaylist(String username, Long playlistId, Long trackId) {
+        return TrackSimpleDTO.builder()
+                .id(1L)
+                .name("Track test")
+                .albumPosition(1)
+                .numberOfLikes(10L)
+                .build();
+    }
+
+    @Override
+    public TrackSimpleDTO addTrackToPlaylist(String username, Long playlistId, Long trackId) {
+        return TrackSimpleDTO.builder()
+                .id(1L)
+                .name("Track test")
+                .albumPosition(1)
+                .numberOfLikes(10L)
+                .build();
     }
 
     @Override
