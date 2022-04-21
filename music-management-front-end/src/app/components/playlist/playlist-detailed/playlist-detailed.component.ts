@@ -34,20 +34,20 @@ export class PlaylistDetailedComponent implements OnInit {
           error: () => console.log('An error has occured while communicating with the back-end service')
         });
   
-    //     this.trackService.getTracksByAlbum(playlistId).subscribe({
-    //       next: tracks => this.tracks = tracks,
-    //       error: () => console.log("An error has occured while communicating with the back-end service")
-    //     });
+        this.trackService.getTracksByPlaylist(playlistId).subscribe({
+          next: tracks => this.tracks = tracks,
+          error: () => console.log("An error has occured while communicating with the back-end service")
+        });
   
-    //     this.refreshSubscription = this.trackService.refreshSubject.subscribe({
-    //       next: () => {
-    //         this.trackService.getTracksByAlbum(playlistId).subscribe({
-    //           next: tracks => this.tracks = tracks,
-    //           error: () => console.log("An error has occured while communicating with the back-end service")
-    //         });
-    //       },
-    //       error: () => console.log("Subscription to refreshSubject of TrackService failed")
-    //     });
+        this.refreshSubscription = this.trackService.refreshSubject.subscribe({
+          next: () => {
+            this.trackService.getTracksByPlaylist(playlistId).subscribe({
+              next: tracks => this.tracks = tracks,
+              error: () => console.log("An error has occured while communicating with the back-end service")
+            });
+          },
+          error: () => console.log("Subscription to refreshSubject of TrackService failed")
+        });
         
       } else {
         alert('Invalid ID');
