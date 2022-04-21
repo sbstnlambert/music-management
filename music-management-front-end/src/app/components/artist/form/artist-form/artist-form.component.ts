@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { noBlankSpaces } from 'src/app/components/validation/no-blank-spaces.validator';
+import { NoBlankSpacesDirective } from 'src/app/directive/no-blank-spaces.directive';
 import { ArtistService } from 'src/app/service/artist.service';
 
 @Component({
