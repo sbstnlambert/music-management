@@ -45,6 +45,11 @@ public class TrackServiceMock implements TrackService {
     }
 
     @Override
+    public List<TrackSimpleDTO> getTracksByPlaylist(String username, Long playlistId) {
+        return null;
+    }
+
+    @Override
     public TrackSimpleDTO deleteTrackById(Long id) {
         return TrackSimpleDTO.builder()
                 .id(1L)

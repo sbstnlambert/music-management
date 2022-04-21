@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -36,6 +37,9 @@ public class User implements UserDetails {
     @Email
     @Column(name = "email", nullable = false, unique = true)
     private String email;
+
+    @OneToMany(mappedBy = "user")
+    private List<Playlist> playlists = new ArrayList<>();
 
     private boolean isNotLocked = true;
 

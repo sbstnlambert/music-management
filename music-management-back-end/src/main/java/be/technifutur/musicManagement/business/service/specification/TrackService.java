@@ -16,6 +16,7 @@ public interface TrackService {
     List<TrackSimpleDTO> getTracksByNameWithAutocomplete(String nameFragment);
     List<TrackSimpleDTO> getTracksByAlbum(Long albumId);
     List<TrackSimpleDTO> getTracksByArtist(Long artistId);
+    List<TrackSimpleDTO> getTracksByPlaylist(String username, Long playlistId);
 
     // DELETE
     TrackSimpleDTO deleteTrackById(Long id);

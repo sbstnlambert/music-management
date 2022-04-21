@@ -3,10 +3,13 @@ package be.technifutur.musicManagement.controller;
 import be.technifutur.musicManagement.business.service.specification.TrackService;
 import be.technifutur.musicManagement.model.dto.TrackDetailedDTO;
 import be.technifutur.musicManagement.model.dto.TrackSimpleDTO;
+import be.technifutur.musicManagement.model.entity.User;
 import be.technifutur.musicManagement.model.form.TrackForm;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -41,6 +44,13 @@ public class TrackController {
     @GetMapping("/artist/{artistId}")
     public List<TrackSimpleDTO> getTracksByArtist(@PathVariable Long artistId) {
         return this.service.getTracksByArtist(artistId);
+    }
+
+    // GET - http://localhost:8080/track/playlist/:playlistId
+    @GetMapping("/playlist/{playlistId}")
+    @PreAuthorize("isAuthenticated()")
+    public List<TrackSimpleDTO> getTracksByPlaylist(Authentication auth, @PathVariable Long playlistId) {
+        return this.service.getTracksByPlaylist(((User) auth.getPrincipal()).getUsername(), playlistId);
     }
 
     // POST - http://localhost:8080/track/add
