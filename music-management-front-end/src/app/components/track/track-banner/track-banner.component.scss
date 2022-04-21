@@ -7,7 +7,12 @@
     background-color: #6183ff;
 }
 
-button {
+.delete {
     border-right: 1px solid grey;
+    border-radius: 0;
+}
+
+.like {
+    border-left: 1px solid grey;
     border-radius: 0;
 }
