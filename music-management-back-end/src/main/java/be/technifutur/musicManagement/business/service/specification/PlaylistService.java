@@ -7,13 +7,13 @@ import java.util.List;
 public interface PlaylistService {
 
     // CREATE
-    PlaylistDTO createrPlaylist(String name);
+    PlaylistDTO createPlaylist(String username, String name);
 
     // READ
-    PlaylistDTO getPlaylistById(Long id);
+    PlaylistDTO getPlaylistById(String username, Long id);
     List<PlaylistDTO> getPlaylistsByUser(String username);
 
     // DELETE
-    PlaylistDTO deletePlaylistById(Long id);
+    PlaylistDTO deletePlaylistById(String username, Long id);
 
 }

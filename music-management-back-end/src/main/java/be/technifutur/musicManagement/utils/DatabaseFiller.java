@@ -20,6 +20,7 @@ public class DatabaseFiller implements InitializingBean {
     private final TrackRepository trackRepository;
     private final GenreRepository genreRepository;
     private final UserRepository userRepository;
+    private final PlaylistRepository playlistRepository;
     private final PasswordEncoder encoder;
 
     @Override
@@ -257,26 +258,56 @@ public class DatabaseFiller implements InitializingBean {
         //endregion
 
         // region USER
-        User user = new User();
-        user.setUsername("lionel");
-        user.setPassword(this.encoder.encode("lionel"));
-        user.setEmail("lionel.test@security.com");
-        user.setRoles(List.of("ROLE_USER"));
-        userRepository.save(user);
+        User lionel = new User();
+        lionel.setUsername("lionel");
+        lionel.setPassword(this.encoder.encode("lionel"));
+        lionel.setEmail("lionel.test@security.com");
+        lionel.setRoles(List.of("ROLE_USER"));
+        userRepository.save(lionel);
 
-        user = new User();
-        user.setUsername("sebastien");
-        user.setPassword(this.encoder.encode("sebastien"));
-        user.setEmail("sebastien.test@security.com");
-        user.setRoles(List.of("ROLE_USER"));
-        userRepository.save(user);
+        User seb = new User();
+        seb.setUsername("sebastien");
+        seb.setPassword(this.encoder.encode("sebastien"));
+        seb.setEmail("sebastien.test@security.com");
+        seb.setRoles(List.of("ROLE_USER"));
+        userRepository.save(seb);
 
-        user = new User();
-        user.setUsername("admin");
-        user.setPassword(this.encoder.encode("admin"));
-        user.setEmail("admin.test@security.com");
-        user.setRoles(Arrays.asList("ROLE_USER", "ROLE_ADMIN"));
-        userRepository.save(user);
+        User admin = new User();
+        admin.setUsername("admin");
+        admin.setPassword(this.encoder.encode("admin"));
+        admin.setEmail("admin.test@security.com");
+        admin.setRoles(Arrays.asList("ROLE_USER", "ROLE_ADMIN"));
+        userRepository.save(admin);
+        // endregion
+
+        // region PLAYLIST
+        Playlist p1Lio = new Playlist();
+        p1Lio.setName("Pop, Rap, Nu-metal");
+        p1Lio.setUser(lionel);
+        p1Lio.setTracks(Arrays.asList(
+                astronomicalTrack,
+                jumpsuit,
+                levitate
+        ));
+        playlistRepository.save(p1Lio);
+
+        Playlist p2Lio = new Playlist();
+        p2Lio.setName("Hip");
+        p2Lio.setUser(lionel);
+        p2Lio.setTracks(Arrays.asList(
+                deutschlandTrack,
+                jumpsuit
+        ));
+        playlistRepository.save(p2Lio);
+
+        Playlist pSeb = new Playlist();
+        pSeb.setName("Masked Wolf preferred");
+        pSeb.setUser(seb);
+        pSeb.setTracks(Arrays.asList(
+                astronomicalTrack,
+                gravityGlidin
+        ));
+        playlistRepository.save(pSeb);
         // endregion
 
     }

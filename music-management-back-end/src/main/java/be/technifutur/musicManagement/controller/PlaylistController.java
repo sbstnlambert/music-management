@@ -26,18 +26,21 @@ public class PlaylistController {
     }
 
     @GetMapping("/{id}")
-    public PlaylistDTO getPlaylistById(@PathVariable Long id) {
-        return this.playlistService.getPlaylistById(id);
+    @PreAuthorize("isAuthenticated()")
+    public PlaylistDTO getPlaylistById(Authentication auth, @PathVariable Long id) {
+        return this.playlistService.getPlaylistById(((User) auth.getPrincipal()).getUsername(), id);
     }
 
     @PostMapping("/add")
-    public PlaylistDTO createPlaylist(@RequestParam String name) {
-        return this.playlistService.createrPlaylist(name);
+    @PreAuthorize("isAuthenticated()")
+    public PlaylistDTO createPlaylist(Authentication auth, @RequestParam String name) {
+        return this.playlistService.createPlaylist(((User) auth.getPrincipal()).getUsername(), name);
     }
 
     @DeleteMapping("/{id}")
-    public PlaylistDTO deletePlaylistById(@PathVariable Long id) {
-        return this.playlistService.deletePlaylistById(id);
+    @PreAuthorize("isAuthenticated()")
+    public PlaylistDTO deletePlaylistById(Authentication auth, @PathVariable Long id) {
+        return this.playlistService.deletePlaylistById(((User) auth.getPrincipal()).getUsername(), id);
     }
 
 }

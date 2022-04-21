@@ -2,16 +2,13 @@ package be.technifutur.musicManagement.business.service.implementation;
 
 import be.technifutur.musicManagement.business.service.specification.PlaylistService;
 import be.technifutur.musicManagement.model.dto.PlaylistDTO;
-import org.springframework.security.core.Authentication;
-import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
 
-@Service
 public class PlaylistServiceMock implements PlaylistService {
     @Override
-    public PlaylistDTO createrPlaylist(String name) {
+    public PlaylistDTO createPlaylist(String username, String name) {
         return PlaylistDTO.builder()
                 .id(1L)
                 .name("Test playlist")
@@ -19,7 +16,7 @@ public class PlaylistServiceMock implements PlaylistService {
     }
 
     @Override
-    public PlaylistDTO getPlaylistById(Long id) {
+    public PlaylistDTO getPlaylistById(String username, Long id) {
         return PlaylistDTO.builder()
                 .id(1L)
                 .name("Test playlist")
@@ -45,7 +42,7 @@ public class PlaylistServiceMock implements PlaylistService {
     }
 
     @Override
-    public PlaylistDTO deletePlaylistById(Long id) {
+    public PlaylistDTO deletePlaylistById(String username, Long id) {
         return PlaylistDTO.builder()
                 .id(1L)
                 .name("Test playlist 1")
