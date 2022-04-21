@@ -1,0 +1,23 @@
+<ng-template #loading>
+    <div>
+        <p>Loading...</p>
+    </div>
+</ng-template>
+
+<div *ngIf="playlist; else loading">
+    <div class="container d-flex justify-content-center align-items-center pt-5 pb-5">
+        <h2>{{ playlist.name }}</h2>
+    </div>    
+    <div class="container-sm d-flex justify-content-center flex-column">
+        <ul class="list-group">
+            <li class="track-banner list-group-item d-flex justify-content-center align-items-center"
+                (click)="onClick()">
+                <span class="me-3 mb-2 fs-1">+</span>
+                Add a new song to playlist
+            </li>
+            <!-- <app-track-banner *ngFor="let track of tracks"
+                            [track]="track">
+            </app-track-banner> -->
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+<div class="card m-1 card-data" 
+     style="width: 18rem;"
+     (mouseenter)="onHover()" 
+     (mouseleave)="onHover()" >
+    <img (click)="onClick()"
+            src="assets/logo/logo_small_icon_only.jpg"
+            class="card-img-top card-img-data" 
+            alt="Image" 
+            style="height: 286px;">
+    <div class="card-body" style="height: 70px;">
+        <p class="card-text d-flex justify-content-between align-items-center"
+           style="height: 100%;">
+           {{ playlist.name }}
+           <button *ngIf="isHovered"
+                    class="btn btn-outline-danger btn-reversed"
+                    (click)="onDelete()">
+                Delete
+            </button>
+        </p>
+    </div>
+</div>
+

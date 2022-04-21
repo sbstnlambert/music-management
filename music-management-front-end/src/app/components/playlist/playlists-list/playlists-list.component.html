@@ -1,0 +1,55 @@
+<ng-template #loading>
+    <div>
+        <p>Loading...</p>
+    </div>
+</ng-template>
+
+<div *ngIf="playlists; else loading">
+    <div class="container d-flex justify-content-center align-items-center pt-5 pb-5">
+        <h2>My playlists</h2>
+    </div>    
+    <div class="m-5 mt-0 d-flex justify-content-center flex-row flex-wrap">
+
+        <!-- Playlist add card -->
+        <div class="card m-1 card-form" style="width: 18rem;">
+            <img src="assets/add-artist-cross.svg" class="card-img-top" alt="Card to add a new playlist">
+            <div class="card-body">
+                <p class="card-text">As a registered user, you get some cool rights. Lucky you!</p>
+                <form>
+                    <input type="text"
+                            class="form-control"
+                            placeholder="My customized playlist name" 
+                            required
+                            appNoBlankSpaces
+                            maxlength=255
+                            [(ngModel)]="playlistName"
+                            #name="ngModel"
+                            [ngModelOptions]="{standalone: true}">
+                    <!-- Playlist name validation -->
+                    <div *ngIf="name.invalid && (name.dirty || name.touched)"
+                        class="alert alert-danger p-1 fs-s">
+                        <div *ngIf="name.errors?.['required']">
+                            Name is required.
+                        </div>
+                        <div *ngIf="name.errors?.['noBlankSpaces']">
+                            Name must contain at least one character.
+                        </div>
+                        <div *ngIf="name.errors?.['maxlength']">
+                            Name must be 255 characters long at maximum.
+                        </div>
+                    </div>
+                    <br>
+                    <button type="submit"
+                            class="btn btn-outline-primary btn-reversed"
+                            (click)="onSubmit()">
+                        Create a playlist
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Get playlists list -->
+        <app-playlist-card *ngFor="let playlist of playlists" 
+                        [playlist]="playlist">
+        </app-playlist-card>
+</div>
