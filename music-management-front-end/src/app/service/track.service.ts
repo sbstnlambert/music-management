@@ -25,6 +25,10 @@ export class TrackService {
     return this.http.get<Array<TrackSimple>>(`${this.BASE_URL}/album/${albumId}`);
   }
 
+  public getTracksByPlaylist(playlistId: number): Observable<Array<TrackSimple>> {
+    return this.http.get<Array<TrackSimple>>(`${this.BASE_URL}/playlist/${playlistId}`);
+  }
+
   public getTrackById(id: number): Observable<TrackDetailed> {
     return this.http.get<TrackDetailed>(`${this.BASE_URL}/${id}`);
   }
