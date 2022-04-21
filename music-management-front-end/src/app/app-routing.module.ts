@@ -13,6 +13,9 @@ import { TrackDetailedComponent } from './components/track/track-detailed/track-
 import { TracksListComponent } from './components/track/tracks-list/tracks-list.component';
 import { SignUpComponent } from './components/user-account/sign-up/sign-up.component';
 import { AdminGuard } from './guard/admin.guard';
+import { PlaylistsListComponent } from './components/playlist/playlists-list/playlists-list.component';
+import { PlaylistDetailedComponent } from './components/playlist/playlist-detailed/playlist-detailed.component';
+import { UserGuard } from './guard/user.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'artist', pathMatch: 'full'},
@@ -25,6 +28,9 @@ const routes: Routes = [
   { path: 'album/:id', component: AlbumDetailedComponent },
   { path: 'track', component: TracksListComponent },
   { path: 'track/:id', component: TrackDetailedComponent },
+  { path: 'playlist', component: PlaylistsListComponent, canActivate: [UserGuard] },
+  { path: 'playlist/add', component: PlaylistsListComponent, canActivate: [UserGuard] },
+  { path: 'playlist/:id', component: PlaylistDetailedComponent, canActivate: [UserGuard] },
   { path: 'signin', component: SignInComponent },
   { path: 'signup', component: SignUpComponent },
   { path: '404', component: Error404Component },
