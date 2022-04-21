@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { noBlankSpaces } from 'src/app/components/validation/no-blank-spaces.validator';
 import { ArtistService } from 'src/app/service/artist.service';
 
 @Component({
@@ -16,7 +17,7 @@ export class ArtistFormComponent implements OnInit {
   ) { }
 
   artistForm = new FormGroup({
-    name: new FormControl('', [Validators.required, Validators.maxLength(255)]),
+    name: new FormControl('', [Validators.required, Validators.maxLength(255), noBlankSpaces]),
     imageUrl: new FormControl(null, [Validators.maxLength(255), Validators.pattern('^[A-Za-z0-9]*$')])
   });
 
