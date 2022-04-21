@@ -20,8 +20,13 @@
                     </button>
                 </div>
             </a>
+
+            <div>
+                <p>{{ track.name }} - {{ track.artistName }}</p>
+            </div>
+
         </div>
-        <ul class="grid-2-columns container-sm">
+        <!-- <ul class="grid-2-columns container-sm">
             <li class="d-flex justify-content-between align-items-center">Title: {{ track.name }}</li>
             <li class="d-flex justify-content-between align-items-center">Length: {{ track.lengthInSeconds *1000 | date:'mm:ss' }}</li>
             <li class="d-flex justify-content-between align-items-center">Artist: {{ track.artistName }}</li>
@@ -33,6 +38,34 @@
                     <li *ngFor="let genre of track.albumGenres">{{ genre }}  </li>
                 </ul>
             </li>
-        </ul>
+        </ul> -->
     </div>
+
+    <div class="container-sm card-group">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ track.numberOfLikes | numberSuffix }}</h5>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">likes</small>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ track.lengthInSeconds *1000 | date:'mm:ss' }}</h5>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">length</small>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">2022-05-10</h5>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">release date</small>
+          </div>
+        </div>
+      </div>
+
 </div>
