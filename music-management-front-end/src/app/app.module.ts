@@ -24,6 +24,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SignInComponent } from './components/user-account/sign-in/sign-in.component';
 import { SignUpComponent } from './components/user-account/sign-up/sign-up.component';
 import { HeaderSettersInterceptor } from './interceptor/header-setters.interceptor';
+import { PlaylistsListComponent } from './components/playlist/playlists-list/playlists-list.component';
+import { PlaylistCardComponent } from './components/playlist/playlist-card/playlist-card.component';
+import { PlaylistDetailedComponent } from './components/playlist/playlist-detailed/playlist-detailed.component';
+import { NoBlankSpacesDirective } from './directive/no-blank-spaces.directive';
 
 
 @NgModule({
@@ -45,7 +49,11 @@ import { HeaderSettersInterceptor } from './interceptor/header-setters.intercept
     AlbumFormComponent,
     TrackFormComponent,
     SignInComponent,
-    SignUpComponent
+    SignUpComponent,
+    PlaylistsListComponent,
+    PlaylistCardComponent,
+    PlaylistDetailedComponent,
+    NoBlankSpacesDirective
   ],
   imports: [
     BrowserModule,
