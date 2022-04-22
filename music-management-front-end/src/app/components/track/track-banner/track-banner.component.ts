@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons';
 import { faHeart as fasHeart } from '@fortawesome/free-solid-svg-icons';
 import { TrackSimple } from 'src/app/model/track.model';
@@ -18,13 +18,14 @@ export class TrackBannerComponent implements OnInit {
 
   // Font Awesome icons
   faTrashCan = faTrashCan
+  faPlus = faPlus;
+  iconType = farHeart;
 
   deleteIconColor: string = '#ff7c7c';
   likeIconColor: string = '#ff7c7c';
+  plusIconColor: string = '#6183ff';
   
   isHovered: boolean = false;
-  isLikeHovered: boolean = false;
-  isLiked: boolean = true;
 
   @Input()
   track!: TrackSimple;
@@ -43,17 +44,25 @@ export class TrackBannerComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public onClick(): void {
-    this.searchService.resetSearch();
-    this.router.navigate(['track', this.track.id]);
+  public onHover(): void {
+    this.isHovered = !this.isHovered;
   }
 
   public onHoverDeleteButton(): void {
     this.deleteIconColor = (this.deleteIconColor === '#ff7c7c' ? 'red' : '#ff7c7c');
   }
 
-  public onHover(): void {
-    this.isHovered = !this.isHovered;
+  public onHoverLikeButton(): void {
+    this.likeIconColor = (this.likeIconColor === '#ff7c7c' ? 'red' : '#ff7c7c');
+  }
+
+  public onHoverAddButton(): void {
+    this.plusIconColor = (this.plusIconColor === '#6183ff' ? 'blue' : '#6183ff');
+  }
+
+  public onClick(): void {
+    this.searchService.resetSearch();
+    this.router.navigate(['track', this.track.id]);
   }
 
   public onDelete(): void {
@@ -63,12 +72,12 @@ export class TrackBannerComponent implements OnInit {
     });
   }
 
-  public onHoverLikeButton(): void {
-    this.likeIconColor = (this.likeIconColor === '#ff7c7c' ? 'red' : '#ff7c7c');
+  public onLike(): void {
+    this.iconType === farHeart ? this.iconType = fasHeart : this.iconType = farHeart;
   }
 
-  public onLike(): void {
-    this.isLiked = !this.isLiked;
+  public onAddToPlaylist(): void {
+    
   }
 
 }

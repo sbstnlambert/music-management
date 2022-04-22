@@ -7,7 +7,7 @@
             (mouseenter)="onHoverDeleteButton()"
             (mouseleave)="onHoverDeleteButton()"
             (click)="onDelete()"
-            *ngIf="isHovered  && authService.userRoles?.includes('ROLE_ADMIN')">
+            *ngIf="isHovered && authService.userRoles?.includes('ROLE_ADMIN')">
         <fa-icon [icon]="faTrashCan" [styles]="{'color': deleteIconColor}" size="lg"></fa-icon>
     </button>
     <div class="d-flex ps-3 pe-3 justify-content-between" style="flex-grow: 1;" (click)="onClick()">
@@ -22,8 +22,15 @@
             (mouseenter)="onHoverLikeButton()"
             (mouseleave)="onHoverLikeButton()"
             (click)="onLike()"
-            *ngIf="isHovered  && authService.userRoles?.includes('ROLE_USER')">
-        <fa-icon *ngIf="!isLiked" [icon]="['far', 'heart']" [styles]="{'color': likeIconColor}" size="lg"></fa-icon>
-        <fa-icon *ngIf="isLiked" [icon]="['fas', 'heart']" [styles]="{'color': likeIconColor}" size="lg"></fa-icon>
+            *ngIf="isHovered && authService.userRoles?.includes('ROLE_USER')">
+        <fa-icon [icon]="[iconType.prefix, 'heart']" [styles]="{'color': likeIconColor}" size="lg"></fa-icon>
+    </button>
+    <button class="btn add"
+            style="width: 58px; height: 58px;"
+            (mouseenter)="onHoverAddButton()"
+            (mouseleave)="onHoverAddButton()"
+            (click)="onAddToPlaylist()"
+            *ngIf="isHovered && authService.userRoles?.includes('ROLE_USER')">
+        <fa-icon [icon]="faPlus" [styles]="{'color': plusIconColor}" size="lg"></fa-icon>
     </button>
 </li>
